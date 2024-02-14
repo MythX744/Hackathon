@@ -1,4 +1,4 @@
 package com.example.Project.Service;
 
-public class UserService {
+public interface ICampaignService {
 }
