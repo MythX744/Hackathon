@@ -17,10 +17,10 @@ import org.springframework.http.ResponseEntity;
 @RestController
 @RequestMapping("/barcodes")
 public class QRController {
-    @GetMapping(value = "/barbecue/ean13/{barcode}", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<BufferedImage> barbecueEAN13Barcode(String barcode, int width)
+    @GetMapping(value = "/ean13/{campaignId}", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<BufferedImage> zebraEAN13Barcode(String campaignId, int size)
             throws Exception {
-        return okResponse(CodeGen.generateQRCodeImage(barcode, width));
+        return okResponse(CodeGen.generateQRCodeImage(campaignId, size));
     }
 
     @Bean
