@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+
+    <title>Beautiful glass login form - Bedimcode</title>
+</head>
+<body>
+<div class="container">
+    <div class="login__content">
+        <img th:src="@{/images/bg-login.png}" alt="login image" class="login__img">
+
+        <form th:action="@{/User/login}" method="post" class="login__form" th:object="${user}">
+            <div>
+                <h1 class="login__title">
+                    <span>Welcome</span> Back
+                </h1>
+                <p class="login__description">
+                    Welcome! Please login to continue.
+                </p>
+            </div>
+
+            <div>
+                <div class="login__inputs">
+                    <div>
+                        <label for="input-email" class="login__label">Email</label>
+                        <input type="email" placeholder="Enter your email address" required class="login__input" id="input-email" th:field="*{email}">
+                    </div>
+
+                    <div>
+                        <label for="input-pass" class="login__label">Password</label>
+
+                        <div class="login__box">
+                            <input type="password" placeholder="Enter your password" required class="login__input" id="input-pass" th:field="*{password}">
+                            <i class="ri-eye-off-line login__eye" id="input-icon"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <div class="login__buttons">
+                    <button type="submit" class="login__button">Log In</button>
+                    <a th:href="@{/User/loadSignup}" class="login__button login__button-ghost">Sign Up</a>
+                </div>
+
+                <a href="#" class="login__forgot">Sign as a guest</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--=============== MAIN JS ===============-->
+<script th:src="@{/js/login.js}"></script>
+</body>
+</html>
