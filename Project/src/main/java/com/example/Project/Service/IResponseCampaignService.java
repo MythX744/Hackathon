@@ -1,16 +1,19 @@
 package com.example.Project.Service;
 
-import com.example.Project.Model.Campaign;
+import com.example.Project.Model.ResponseCampaign;
+
 import java.util.List;
 
 public interface IResponseCampaignService {
-    Campaign save(Campaign campaign);
+    ResponseCampaign save(ResponseCampaign responseCampaign);
 
-    Campaign getById(Long id);
+    ResponseCampaign getById(Long id);
 
-    List<Campaign> getAll();
+    List<ResponseCampaign> getAll();
 
-    Campaign update(Campaign campaign);
+    ResponseCampaign update(ResponseCampaign responseCampaign);
 
     void delete(Long id);
+
+    boolean doesResponseCampaignIdExist(Long id);
 }

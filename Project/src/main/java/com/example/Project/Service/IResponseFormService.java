@@ -13,4 +13,6 @@ public interface IResponseFormService {
     ResponseForm findResponseFormById(Long id);
 
     List<ResponseForm> findAllResponseForms();
+
+    boolean doesResponseFormIdExist(Long id);
 }

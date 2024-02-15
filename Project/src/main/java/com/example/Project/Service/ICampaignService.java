@@ -13,4 +13,6 @@ public interface ICampaignService {
     List<Campaign> getAllCampaigns();
 
     void deleteCampaign(Long id);
+
+    boolean doesCampaignIdExist(Long id);
 }

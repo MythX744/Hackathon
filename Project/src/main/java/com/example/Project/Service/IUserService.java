@@ -12,5 +12,9 @@ public interface IUserService {
 
     void deleteById(Long userId);
 
-    User login(String username, String password);
+    User login(String email, String password);
+
+    User findByEmail(String email);
+
+    boolean doesUserIdExist(Long id);
 }

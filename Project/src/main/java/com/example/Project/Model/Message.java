@@ -2,6 +2,9 @@ package com.example.Project.Model;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "MESSAGES")
 public class Message {
@@ -11,7 +14,8 @@ public class Message {
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private User sender;
-
+    @Column(name = "date")
+    private LocalDate date;
     @ManyToOne
     @JoinColumn(name = "receiver_id")
     private User receiver;
@@ -32,6 +36,14 @@ public class Message {
 
     public void setSender(User sender) {
         this.sender = sender;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public User getReceiver() {

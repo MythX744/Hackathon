@@ -16,4 +16,6 @@ public interface ISchoolService {
     void delete(Long id);
 
     School findSchoolByName(String name);
+
+    boolean doesSchoolIdExist(Long id);
 }

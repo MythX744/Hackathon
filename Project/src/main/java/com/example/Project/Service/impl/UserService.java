@@ -1,41 +1,52 @@
 package com.example.Project.Service.impl;
 
+import com.example.Project.DAO.UserDAO;
 import com.example.Project.Model.User;
 import com.example.Project.Service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class UserService implements IUserService {
 
-    private final UserRepo userRepo;
+    private final UserDAO userRepo;
 
     @Autowired
-    public UserService(UserRepo theUserRepo){userRepo = theUserRepo;}
+    public UserService(UserDAO theUserRepo){userRepo = theUserRepo;}
 
     @Override
     public List<User> findAll() {
-        return null;
+        return userRepo.findAll();
     }
 
     @Override
     public User findById(Long userId) {
-        return null;
+        return userRepo.getReferenceById(userId);
     }
 
     @Override
     public User save(User user) {
-        return null;
+        return userRepo.save(user);
     }
 
     @Override
     public void deleteById(Long userId) {
-
+        userRepo.deleteById(userId);
     }
 
     @Override
-    public User login(String username, String password) {
-        return null;
+    public User login(String email, String password) {
+        return userRepo.findByEmailAndPassword(email, password);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepo.findByEmail(email);
+    }
+
+    @Override
+    public boolean doesUserIdExist(Long id) {
+        return userRepo.existsById(id);
     }
 }
