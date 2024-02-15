@@ -16,7 +16,5 @@ public interface IUserService {
 
     User login(String email, String password);
 
-    User findByEmail(String email);
-
     boolean doesUserIdExist(Long id);
 }
