@@ -18,6 +18,10 @@ public class School {
     @OneToMany(mappedBy = "school", cascade = CascadeType.ALL)
     private Set<Campaign> campaigns;
 
+    public School() {
+
+    }
+
     public Long getId() {
         return id;
     }
