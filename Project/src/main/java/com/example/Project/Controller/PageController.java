@@ -28,7 +28,6 @@ public class PageController {
         return "";
     }
 
-
     @RequestMapping("/User/loadProfile")
     public String LoadProfile(){
         return "profile";
