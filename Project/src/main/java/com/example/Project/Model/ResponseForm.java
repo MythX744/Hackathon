@@ -67,6 +67,9 @@ public class ResponseForm {
         this.user = user;
     }
 
+    public ResponseForm() {
+    }
+
     public ResponseForm(Long id, String text, LocalDate date, String decision, User user) {
         this.id = id;
         this.text = text;

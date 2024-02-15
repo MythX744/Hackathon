@@ -10,10 +10,13 @@
     src: url('/fonts/Sora-Thin.ttf') format('truetype');
 }
 body {
-    background-color: #12069D;
-    background: linear-gradient(to bottom, #12069D, #FCFCFC);
+    background-color: #F0F0F0;
     opacity: 0;
     transition: opacity 0.5s ease;
+    margin: 0;
+    font-family: "Sora Regular", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
 }
 body.loaded {
     opacity: 1; /* Show content when loaded */
@@ -24,6 +27,106 @@ body::-webkit-scrollbar {
 a {
     transition: opacity 0.5s ease; /* Add transition effect to links */
 }
+.description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.logo{
+    width: 250px;
+    height: auto;
+}
+h2 {
+    font-family: "Sora Bold", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+}
+.bottom-section {
+    display: flex;
+    margin-top: 20px;
+    height: 400px;
+}
+.report-section {
+    background-color: #5762D5;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+}
+.report-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    width: inherit;
+    height: inherit;
+}
+.report-section-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
+}
+.testimony-section {
+    background-color: #5762D5;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+}
+.testimony-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    width: inherit;
+    height: inherit;
+}
+.testimony-section-sub {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 400px;
+}
+.report-section, .testimony-section {
+    flex: 1;
+    transition: flex-grow 0.5s ease;
+}
+.report-section:hover, .testimony-section:hover{
+    flex-grow: 2;
+}
+.report-section:not(:hover), .testimony-section:not(:hover){
+    flex-grow: 1;
+}
+
+.emergency-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0 0 0;
+}
+.emergency-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Sora SemiBold", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    background-color:#ff2e2e;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    width: 214px;
+    height: 40px;
+    transition : transform 1000ms;
+}
+.emergency-button:hover,.emergency-button:focus-visible {
+    transform: translateY(-0.75rem);
+    transition : transform 250ms;
+}
+
 footer {
     font-family: "Sora Regular", sans-serif;
     font-weight: 400;
@@ -32,6 +135,7 @@ footer {
     text-align: center;
     margin-top: -50px;
     font-size: 16px;
+    width: 100%;
 }
 #mainBase {
     flex: 1;
@@ -40,6 +144,11 @@ footer {
 .subheader {
     display: flex;
     justify-content: flex-end;
+    margin: 20px 20px 20px 0;
+    text-decoration: none;
+}
+.SignUp-button {
+    text-decoration: none;
 }
 .containerBase {
     max-width: 1200px;
