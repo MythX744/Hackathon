@@ -15,6 +15,7 @@ import com.example.Project.Service.impl.UserService;
 
 
 @Controller
+@RequestMapping("/User")
 public class UserController {
     private final UserService userService;
     @Autowired
@@ -23,7 +24,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/loadSignup")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
 
@@ -40,13 +41,13 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/loadLogin")
     public String showLoginForm(Model model) {
         model.addAttribute("user", new User());
         return "login";
     }
     @PostMapping("/login")
-    public String userLogin(@ModelAttribute("user") @Valid User myUser, BindingResult bindingResult, HttpSession session){
+    public String login(@ModelAttribute("user") @Valid User myUser, BindingResult bindingResult, HttpSession session){
         User authdUser = userService.login(myUser.getEmail(), myUser.getPassword());
         if (authdUser != null){
             session.setAttribute("loggedInUser", authdUser);
