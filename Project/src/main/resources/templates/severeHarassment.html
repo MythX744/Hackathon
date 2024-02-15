@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/severeHarassment.css}" />
+    <title>Severe Harassment</title>
+</head>
+<body>
+<div id="content-wrapBase">
+    <div th:replace="fragments/header :: header"></div>
+    <main id="mainBase">
+        <div class="text-section">
+            <p> &nbsp;&nbsp;It's important that you know we're here to help and support you. We're deeply concerned about the situation you're facing at school. Your safety is our top priority.<br>
+                Please understand that what you're going through is serious, and you shouldn't have to endure it alone. You need to reach out to someone you trust as soon as possible.
+                Whether it's a teacher, counselor, family member, or friend, they can provide the support and guidance you need.<br>
+                Also, we encourage you to consider sharing your experiences. By speaking up, you can help put an end to the harassment and protect yourself and others.
+                Your voice matters, and your bravery can make a difference.<br>
+                <br>To assist you further, please provide us with some information by filling out the form below:<br></p>
+            <div class="form-section">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <fieldset>
+                            <legend>Would you like us to discuss with your parent?</legend>
+                            <label>
+                                <input type="radio" name="choiceQ1" value="yes" required> Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="choiceQ1" value="no" required> No
+                            </label>
+                        </fieldset>
+                    </div>
+                    <div class="form-group" style="display:none;" id="phone-number-input">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group" style="display:none;"> <!-- Initially hidden -->
+                        <fieldset>
+                            <legend>Who would you like us to discuss this matter with?</legend>
+                            <label>
+                                <input type="radio" name="choiceQ2" value="family" required> Member of your family
+                            </label>
+                            <label>
+                                <input type="radio" name="choiceQ2" value="academic" required> Academic reference
+                            </label>
+                            <label>
+                                <input type="radio" name="choiceQ2" value="professional" required> Specialised professional
+                            </label>
+                        </fieldset>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const choiceQ1Yes = document.querySelector('input[name="choiceQ1"][value="yes"]');
+        const choiceQ1No = document.querySelector('input[name="choiceQ1"][value="no"]');
+        const choiceQ2Family = document.querySelector('input[name="choiceQ2"][value="family"]');
+        const secondQuestion = document.querySelector('.form-group:nth-child(3)');
+        const phoneNumberInput = document.querySelector('#phone-number-input');
+        const submitButton = document.querySelector('.form-group button');
+
+        function handleChoiceQ1Change() {
+            if (choiceQ1Yes.checked) {
+                secondQuestion.style.display = 'none';
+                phoneNumberInput.style.display = 'block';
+                phoneNumberInput.scrollIntoView({behavior: 'smooth'});
+            } else if (choiceQ1No.checked) {
+                secondQuestion.style.display = 'block';
+                secondQuestion.scrollIntoView({behavior: 'smooth'});
+                phoneNumberInput.style.display = 'none';
+            }
+        }
+
+        function handleChoiceQ2Change() {
+            if (choiceQ2Family.checked) {
+                phoneNumberInput.style.display = 'block';
+                phoneNumberInput.scrollIntoView({behavior: 'smooth'});
+            } else {
+                // Hide phone number input and submit button if the second question changes away from family member
+                phoneNumberInput.style.display = 'none';
+            }
+        }
+
+        choiceQ1Yes.addEventListener('change', handleChoiceQ1Change);
+        choiceQ1No.addEventListener('change', handleChoiceQ1Change);
+        document.querySelectorAll('input[name="choiceQ2"]').forEach(radio => {
+            radio.addEventListener('change', handleChoiceQ2Change);
+        });
+
+        // Initial checks
+        handleChoiceQ1Change();
+        handleChoiceQ2Change();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const specialists = [
+            { name: "Dr. Smith", phone: "123-456-7890" },
+            { name: "Dr. Jones", phone: "098-765-4321" }
+        ];
+        const academicReferences = [
+            { name: "Prof. Adams", phone: "111-222-3333" },
+            { name: "Prof. Brown", phone: "444-555-6666" }
+        ];
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+            const form = event.target;
+            const choiceQ2Value = document.querySelector('input[name="choiceQ2"]:checked').value;
+            const resultsContainer = document.createElement('div');
+            resultsContainer.classList.add('result-container');
+
+            let selectedGroup = [];
+            if (choiceQ2Value === "professional") {
+                selectedGroup = specialists;
+            } else if (choiceQ2Value === "academic") {
+                selectedGroup = academicReferences;
+            }
+
+            selectedGroup.forEach(person => {
+                const container = document.createElement('div');
+                container.className = 'result-card'; // Use the result-card class for styling
+
+                const nameElement = document.createElement('div');
+                nameElement.className = 'name';
+                nameElement.textContent = person.name; // Add the person's name
+
+                const phoneElement = document.createElement('div');
+                phoneElement.className = 'phone';
+                phoneElement.textContent = person.phone; // Add the person's phone number
+
+                container.appendChild(nameElement);
+                container.appendChild(phoneElement);
+                resultsContainer.appendChild(container);
+            });
+
+            // Hide the form and append the resultsContainer to the form-section
+            const formSection = document.querySelector('.form-section');
+            formSection.innerHTML = ''; // Clear the form section
+            formSection.appendChild(resultsContainer);
+        });
+    });
+</script>

@@ -23,10 +23,6 @@ public class ResponseForm {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public ResponseForm() {
-
-    }
-
     public Long getId() {
         return id;
     }
