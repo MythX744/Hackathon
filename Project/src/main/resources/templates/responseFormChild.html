@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/responseFormChild.css}" />
+    <title>Form</title>
+</head>
+<body>
+<div id="content-wrapBase">
+    <div th:replace="fragments/header :: header" > </div>
+    <main id="mainBase">
+        <div class="form_content">
+            <div class="question">
+                <h5> Being bullied is difficult, Remember you are never alone. But, have you ever felt like there is no hope? Put a check next to each statement that is true of you.</h5>
+                <form action="" method="post">
+                    <div class="question-group">
+                        <div class="option">
+                            <input type="checkbox" id="option1" name="option1" value="option1">
+                            <label for="option1">
+                                <span class="checkbox-box">
+                                    <span class="checkbox-content">
+                                        <img src="image1.jpg" alt="Option 1">
+                                        I feel sad more often than not, or may be easily angered and frustrated.
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="option2" name="option2" value="option2">
+                            <label for="option2">
+                                <span class="checkbox-box">
+                                    <span class="checkbox-content">
+                                        <img src="image2.jpg" alt="Option 2">
+                                        I don’t like to hang out with my friends anymore.
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="option3" name="option3" value="option3">
+                            <label for="option3">
+                                <span class="checkbox-box">
+                                  <span class="checkbox-content">
+                                    I sleep a lot more, or a lot less than I used to.
+                                  </span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question-group">
+                        <div class="option">
+                            <input type="checkbox" id="option4" name="option4" value="option4">
+                            <label for="option4">
+                                <span class="checkbox-box">
+                                    <span class="checkbox-content">
+                                        <img src="image3.jpg" alt="Option 4">
+                                        I have a lot of trouble concentrating, and my grade may have dropped.
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="option5" name="option5" value="option5">
+                            <label for="option5">
+                                <span class="checkbox-box">
+                                    <span class="checkbox-content">
+                                        <img src="image4.jpg" alt="Option 5">
+                                        I’ve lost weight or gained a lot of weight.
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="option6" name="option6" value="option6">
+                            <label for="option6">
+                                <span class="checkbox-box">
+                                    <span class="checkbox-content">
+                                        <img src="image5.jpg" alt="Option 6">
+                                        I feel alone, and don’t have anyone I can turn to.
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="question-group">
+                        <div class="option">
+                            <input type="checkbox" id="option7" name="option7" value="option7">
+                            <label for="option7">
+                                <span class="checkbox-box">
+                                    <span class="checkbox-content">
+                                        <img src="image6.jpg" alt="Option 7">
+                                        I cry a lot more than I used to.
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="option8" name="option8" value="option8">
+                            <label for="option8">
+                                <span class="checkbox-box">
+                                    <span class="checkbox-content">
+                                        <img src="image7.jpg" alt="Option 8">
+                                        I always worry, and may have panic attacks.
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="option">
+                            <input type="checkbox" id="option9" name="option9" value="option9">
+                            <label for="option9">
+                                <span class="checkbox-box">
+                                    <span class="checkbox-content">
+                                        <img src="image8.jpg" alt="Option 9">
+                                        Sometimes I feel like it would be better if I weren’t around.
+                                    </span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <div th:replace="fragments/footer :: footer" > </div>
+</div>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>
