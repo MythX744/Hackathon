@@ -143,12 +143,13 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String fullname, String email, String password, LocalDate dateOfBirth, String profile, String phoneNumber, School school, Set<ResponseForm> responseForms, List<Message> sentMessages, List<Message> receivedMessages) {
+    public User(Long id, String fullname, String email, String password, LocalDate dateOfBirth, LocalDateTime actionTime, String profile, String phoneNumber, School school, Set<ResponseForm> responseForms, List<Message> sentMessages, List<Message> receivedMessages) {
         this.id = id;
         this.fullname = fullname;
         this.email = email;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
+        this.actionTime = actionTime;
         this.profile = profile;
         this.phoneNumber = phoneNumber;
         this.school = school;

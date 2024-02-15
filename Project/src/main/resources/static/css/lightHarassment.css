@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora-Bold.ttf') format('truetype');
+    src: url('/fonts/Sora-ExtraBold.ttf') format('truetype');
+    src: url('/fonts/Sora-ExtraLight.ttf') format('truetype');
+    src: url('/fonts/Sora-Light.ttf') format('truetype');
+    src: url('/fonts/Sora-Medium.ttf') format('truetype');
+    src: url('/fonts/Sora-Regular.ttf') format('truetype');
+    src: url('/fonts/Sora-SemiBold.ttf') format('truetype');
+    src: url('/fonts/Sora-Thin.ttf') format('truetype');
+}
+body {
+    margin: 0;
+    background-color: #333333;
+    font-family: "Sora", sans-serif;
+    color: #333;
+    overflow: hidden;
+}
+
+.text-section h2 {
+    font-family: "Sora Bold", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    margin: 0 0 50px 0;
+}
+
+.text-section li {
+    font-weight: 400;
+    font-size: 19px;
+    color: #FF2E2E;
+    margin: 10px 0;
+    font-family: "Sora Bold", sans-serif;
+}
+
+.text-section p {
+    font-weight: 400;
+    font-size: 19px;
+    padding: 4px;
+    color: white;
+    font-family: "Sora Regular", sans-serif;
+}
+
+/* Additional styles to ensure consistency */
+.text-section {
+    padding: 80px 200px 100px 200px;
+}
+
+/* Style adjustments for responsive behavior */
+@media (max-width: 767px) {
+    #mainBase {
+        padding: 40px; /* Reduced padding for smaller screens */
+    }
+}
