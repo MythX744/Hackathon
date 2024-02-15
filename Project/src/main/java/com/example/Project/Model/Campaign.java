@@ -20,6 +20,10 @@ public class Campaign {
     @OneToMany(mappedBy = "campaign", cascade = CascadeType.ALL)
     private Set<ResponseCampaign> responses;
 
+    public Campaign() {
+
+    }
+
     public Long getId() {
         return id;
     }

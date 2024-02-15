@@ -24,6 +24,10 @@ public class Message {
     @Column(name = "text", length = 500)
     private String text;
 
+    public Message() {
+
+    }
+
 
     public Long getId() {
         return id;

@@ -20,10 +20,10 @@ import org.springframework.http.ResponseEntity;
 @RequestMapping("/barcodes")
 public class QRController {
     @GetMapping(value = "/ean13/{campaignId}&{size}", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<BufferedImage> zebraEAN13Barcode(@PathVariable String campaignId, @PathVariable int size, HttpServletRequest req)
+    public ResponseEntity<BufferedImage> zebraEAN13Barcode(String campaignId,int size)
             throws Exception {
 
-        String campaignLink = getHomeUrl(req)+"/" + campaignId;
+        String campaignLink = "https://localhost:8080/" + campaignId;
         return okResponse(CodeGen.generateQRCodeImage(campaignLink, size));
     }
 
