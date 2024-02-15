@@ -38,4 +38,19 @@ public class ResponseCampaign {
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
     }
+
+    public ResponseCampaign(Long id, String text, Campaign campaign) {
+        this.id = id;
+        this.text = text;
+        this.campaign = campaign;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseCampaign{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", campaign=" + campaign +
+                '}';
+    }
 }
