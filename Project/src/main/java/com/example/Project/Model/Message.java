@@ -2,6 +2,7 @@ package com.example.Project.Model;
 
 import jakarta.persistence.*;
 
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
@@ -11,6 +12,7 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private User sender;
@@ -21,6 +23,7 @@ public class Message {
     private User receiver;
     @Column(name = "text", length = 500)
     private String text;
+
 
     public Long getId() {
         return id;

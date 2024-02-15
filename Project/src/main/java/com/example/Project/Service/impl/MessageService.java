@@ -4,6 +4,8 @@ package com.example.Project.Service.impl;
 import com.example.Project.DAO.MessageDAO;
 import com.example.Project.Model.Message;
 import com.example.Project.Model.User;
+import com.example.Project.DAO.MessageDAO;
+import com.example.Project.Model.Message;
 import com.example.Project.Service.IMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,4 +61,9 @@ public class MessageService implements IMessageService {
     public boolean doesMessageIdExist(Long id) {
         return messageDAO.existsById(id);
     }
+
+    public void deleteById(Long id) {
+        messageDAO.deleteById(id);
+    }
+
 }

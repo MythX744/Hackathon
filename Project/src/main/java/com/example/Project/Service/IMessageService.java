@@ -23,5 +23,4 @@ public interface IMessageService {
     List<Message> getMessagesBySenderAndReceiver(User sender, User receiver);
 
     boolean doesMessageIdExist(Long id);
-
 }

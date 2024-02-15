@@ -1,8 +1,6 @@
 package com.example.Project.Service.impl;
 
-
 import com.example.Project.DAO.ResponseCampaignDAO;
-import com.example.Project.Model.Campaign;
 import com.example.Project.Model.ResponseCampaign;
 import com.example.Project.Service.IResponseCampaignService;
 import org.springframework.beans.factory.annotation.Autowired;

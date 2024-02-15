@@ -1,0 +1,53 @@
+@font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora-Bold.ttf') format('truetype');
+    src: url('/fonts/Sora-ExtraBold.ttf') format('truetype');
+    src: url('/fonts/Sora-ExtraLight.ttf') format('truetype');
+    src: url('/fonts/Sora-Light.ttf') format('truetype');
+    src: url('/fonts/Sora-Medium.ttf') format('truetype');
+    src: url('/fonts/Sora-Regular.ttf') format('truetype');
+    src: url('/fonts/Sora-SemiBold.ttf') format('truetype');
+    src: url('/fonts/Sora-Thin.ttf') format('truetype');
+}
+body {
+    background-color: #12069D;
+    background: linear-gradient(to bottom, #12069D, #FCFCFC);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+body.loaded {
+    opacity: 1; /* Show content when loaded */
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+a {
+    transition: opacity 0.5s ease; /* Add transition effect to links */
+}
+footer {
+    font-family: "Sora Regular", sans-serif;
+    font-weight: 400;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    margin-top: -50px;
+    font-size: 16px;
+}
+#mainBase {
+    flex: 1;
+    padding-bottom: 100px;
+}
+.subheader {
+    display: flex;
+    justify-content: flex-end;
+}
+.containerBase {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+#content-wrapBase {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}

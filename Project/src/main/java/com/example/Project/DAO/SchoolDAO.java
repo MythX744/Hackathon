@@ -4,4 +4,5 @@ import com.example.Project.Model.School;
 
 public interface SchoolDAO extends JpaRepository<School, Long>{
     School findByName(String name);
+
 }

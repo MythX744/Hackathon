@@ -224,10 +224,10 @@ img {
 }
 @media screen and (min-width: 1200px) {
     .login__content {
-        height: 700px;
+        height: 968px;
     }
     .login__form {
-        row-gap: 2rem;
+        row-gap: 1.5rem;
         padding: 3rem;
         border-radius: 1.25rem;
         border: 2.5px solid hsla(244, 16%, 92%, 0.75);

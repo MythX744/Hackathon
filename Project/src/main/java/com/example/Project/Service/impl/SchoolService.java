@@ -1,5 +1,4 @@
 package com.example.Project.Service.impl;
-
 import com.example.Project.DAO.SchoolDAO;
 import com.example.Project.Model.School;
 import com.example.Project.Service.ISchoolService;
