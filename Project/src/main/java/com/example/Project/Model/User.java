@@ -2,6 +2,7 @@ package com.example.Project.Model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +26,8 @@ public class User {
     private String password;
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
-
+    @Column(name= "action_time")
+    private LocalDateTime actionTime;
     @Column(name = "profile")
     private String profile;
 
@@ -85,6 +87,14 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public LocalDateTime getActionTime() {
+        return actionTime;
+    }
+
+    public void setActionTime(LocalDateTime actionTime) {
+        this.actionTime = actionTime;
+    }
+
     public String getProfile() {
         return profile;
     }
@@ -140,4 +150,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

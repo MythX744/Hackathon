@@ -16,7 +16,11 @@ public interface IUserService {
 
     User login(String email, String password);
 
-    User findByEmail(String email);
-
     boolean doesUserIdExist(Long id);
+
+    int countUsersByProfile(String profile);
+
+    void updateActionTimeByUser(User user);
+
+    List<User> getLastActiveUsers(int count);
 }
