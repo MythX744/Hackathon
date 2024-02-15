@@ -5,56 +5,51 @@ import com.example.Project.Model.User;
 import com.example.Project.Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService implements IUserService {
-    UserDAO userDAO;
+
+    private final UserDAO userRepo;
 
     @Autowired
-    public UserService(UserDAO userDAO) {
-        this.userDAO = userDAO;
-    }
+    public UserService(UserDAO theUserRepo){userRepo = theUserRepo;}
 
     @Override
     public List<User> findAll() {
-        return userDAO.findAll();
+        return userRepo.findAll();
     }
 
     @Override
-    public User findByEmail(String email) {
-        return userDAO.findByEmail(email);
-    }
-
-    @Override
-    public User findById(Long id) {
-        Optional<User> result = userDAO.findById(id);
-
-        User user = null;
-
-        if (result.isPresent()) {
-            user = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find employee id - " + id);
-        }
-        return user;
+    public User findById(Long userId) {
+        return userRepo.getReferenceById(userId);
     }
 
     @Override
     public User save(User user) {
-        return userDAO.save(user);
+        return userRepo.save(user);
     }
 
     @Override
-    public void deleteById(Long id) {
-        userDAO.deleteById(id);
+    public void deleteById(Long userId) {
+        userRepo.deleteById(userId);
     }
 
     @Override
-    public User login(String username, String password) {
-        return null;
+    public User login(String email, String password) {
+        return userRepo.findByEmailAndPassword(email, password);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepo.findByEmail(email);
+    }
+
+    @Override
+    public boolean doesUserIdExist(Long id) {
+        return userRepo.existsById(id);
     }
 }

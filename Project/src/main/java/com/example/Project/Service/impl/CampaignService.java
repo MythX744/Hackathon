@@ -2,6 +2,7 @@ package com.example.Project.Service.impl;
 
 import com.example.Project.DAO.CampaignDAO;
 import com.example.Project.Model.Campaign;
+import com.example.Project.Service.ICampaignService;
 import com.example.Project.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,42 +11,43 @@ import com.example.Project.Service.*;
 import java.util.List;
 import java.util.Optional;
 
+import java.util.List;
+
 @Service
-public class CampaignService implements ICampaignService{
-    CampaignDAO campaignDAO;
+public class CampaignService implements ICampaignService {
+
+    private final CampaignDAO campaignRepo;
 
     @Autowired
-    public CampaignService(CampaignDAO campaignDAO) {
-        this.campaignDAO = campaignDAO;
+    public CampaignService(CampaignDAO theCampaignRepo){campaignRepo = theCampaignRepo;}
+
+    @Override
+    public Campaign createCampaign(Campaign campaign) {
+        return campaignRepo.save(campaign);
     }
 
     @Override
-    public List<Campaign> findAll() {
-        return campaignDAO.findAll();
+    public Campaign updateCampaign(Campaign campaign) {
+        return campaignRepo.save(campaign);
     }
 
     @Override
-    public Campaign findById(Long id) {
-        Optional<Campaign> result = campaignDAO.findById(id);
-
-        Campaign campaign = null;
-
-        if (result.isPresent()) {
-            campaign = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find employee id - " + id);
-        }
-        return campaign;
+    public Campaign getCampaign(Long id) {
+        return campaignRepo.getReferenceById(id);
     }
 
     @Override
-    public Campaign save(Campaign campaign) {
-        return campaignDAO.save(campaign);
+    public List<Campaign> getAllCampaigns() {
+        return campaignRepo.findAll();
     }
 
     @Override
-    public void deleteById(Long id) {
-        campaignDAO.deleteById(id);
+    public void deleteCampaign(Long id) {
+        campaignRepo.deleteById(id);
+    }
+
+    @Override
+    public boolean doesCampaignIdExist(Long id) {
+        return campaignRepo.existsById(id);
     }
 }

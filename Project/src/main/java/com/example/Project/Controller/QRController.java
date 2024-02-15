@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.BufferedImageHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
@@ -17,10 +18,13 @@ import org.springframework.http.ResponseEntity;
 @RestController
 @RequestMapping("/barcodes")
 public class QRController {
-    @GetMapping(value = "/ean13/{campaignId}", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<BufferedImage> zebraEAN13Barcode(String campaignId, int size)
+    @GetMapping(value = "/ean13/{campaignId}&{size}", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<BufferedImage> zebraEAN13Barcode(@PathVariable String campaignId, @PathVariable int size)
             throws Exception {
-        return okResponse(CodeGen.generateQRCodeImage(campaignId, size));
+        //TODO: modify link to be dynamic
+
+        String campaignLink = "link/" + campaignId;
+        return okResponse(CodeGen.generateQRCodeImage(campaignLink, size));
     }
 
     @Bean

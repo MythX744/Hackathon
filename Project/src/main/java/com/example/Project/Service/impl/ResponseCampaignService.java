@@ -2,48 +2,47 @@ package com.example.Project.Service.impl;
 
 import com.example.Project.DAO.ResponseCampaignDAO;
 import com.example.Project.Model.ResponseCampaign;
-import com.example.Project.Model.User;
 import com.example.Project.Service.IResponseCampaignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ResponseCampaignService implements IResponseCampaignService {
-    ResponseCampaignDAO responseCampaignDao;
+
+    private final ResponseCampaignDAO responseCampaignRepo;
 
     @Autowired
-    public ResponseCampaignService(ResponseCampaignDAO responseCampaignDao) {
-        this.responseCampaignDao = responseCampaignDao;
-    }
+    public ResponseCampaignService(ResponseCampaignDAO theResponseCampaignRepo){responseCampaignRepo = theResponseCampaignRepo;}
 
-    public void saveResponseCampaign(ResponseCampaign responseCampaign) {
-        responseCampaignDao.save(responseCampaign);
-    }
-
-    public List<ResponseCampaign> findAll() {
-        return responseCampaignDao.findAll();
+    @Override
+    public ResponseCampaign save(ResponseCampaign responseCampaign) {
+        return responseCampaignRepo.save(responseCampaign);
     }
 
     @Override
-    public ResponseCampaign findById(Long id) {
-        Optional<ResponseCampaign> result = responseCampaignDao.findById(id);
-
-        ResponseCampaign responseCampaign = null;
-
-        if (result.isPresent()) {
-            responseCampaign = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find employee id - " + id);
-        }
-        return responseCampaign;
+    public ResponseCampaign getById(Long id) {
+        return responseCampaignRepo.getReferenceById(id);
     }
 
-    public void deleteById(Long id) {
-        responseCampaignDao.deleteById(id);
+    @Override
+    public List<ResponseCampaign> getAll() {
+        return responseCampaignRepo.findAll();
     }
 
+    @Override
+    public ResponseCampaign update(ResponseCampaign responseCampaign) {
+        return responseCampaignRepo.save(responseCampaign);
+    }
+
+    @Override
+    public void delete(Long id) {
+        responseCampaignRepo.deleteById(id);
+    }
+
+    @Override
+    public boolean doesResponseCampaignIdExist(Long id) {
+        return responseCampaignRepo.existsById(id);
+    }
 }
