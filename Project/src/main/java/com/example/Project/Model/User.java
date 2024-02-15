@@ -1,55 +1,63 @@
 package com.example.Project.Model;
 
 import jakarta.persistence.*;
-
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "USERS")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
-    @Column(name="fullname")
-    private String fullname;
-    @Column(name="email")
+    private Long id;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "email")
     private String email;
-    @Column(name="password")
-    private String password;
-    @Column(name="profil")
-    private int profil;
-    @Column(name="dob")
-    private Date dob;
-    @Column(name="phone")
-    private int phone;
-    @Column(name="address")
-    private String address;
 
-    public User() {
-    }
-    public User(int idUser, String fullname, String email, String password, int profil, Date dob, int phone, String address) {
-        this.idUser = idUser;
-        this.fullname = fullname;
-        this.email = email;
-        this.password = password;
-        this.profil = profil;
-        this.dob = dob;
-        this.phone = phone;
-        this.address = address;
-    }
-    public int getIdUser() {
-        return idUser;
-    }
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
+
+    @Column(name = "profile")
+    private String profile;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<ResponseForm> responseForms;
+
+    public Long getId() {
+        return id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -60,57 +68,43 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public int getProfil() {
-        return profil;
+    public String getProfile() {
+        return profile;
     }
 
-    public void setProfil(int profil) {
-        this.profil = profil;
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
-    public Date getDob() {
-        return dob;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public int getPhone() {
-        return phone;
+    public School getSchool() {
+        return school;
     }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
+    public void setSchool(School school) {
+        this.school = school;
     }
 
-    public String getAddress() {
-        return address;
+    public Set<ResponseForm> getResponseForms() {
+        return responseForms;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "idUser=" + idUser +
-                ", fullname='" + fullname + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", profil='" + profil + '\'' +
-                ", dob=" + dob +
-                ", phone=" + phone +
-                ", address='" + address + '\'' +
-                '}';
+    public void setResponseForms(Set<ResponseForm> responseForms) {
+        this.responseForms = responseForms;
     }
 }
