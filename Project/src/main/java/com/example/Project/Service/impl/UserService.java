@@ -66,9 +66,9 @@ public class UserService implements IUserService {
         userRepo.save(user);
     }
 
-    @Override
+    /*@Override
     public List<User> getLastActiveUsers(int count) {
         return userRepo.findLastActiveUsers(count);
-    }
+    }*/
 
 }

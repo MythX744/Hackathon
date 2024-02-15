@@ -9,7 +9,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 80px 200px 100px 200px;
+    padding: 80px 200px 20px 200px;
 }
 .text-section h2 {
     font-family: "Sora Bold", sans-serif;
@@ -35,7 +35,6 @@ body{
     font-family: "Sora Regular", sans-serif;
     font-weight: 400;
     font-size: 19px;
-    padding: 4px;
     color: #F0F0F0;
 }
 .form-section {
@@ -45,6 +44,7 @@ body{
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: "Sora Regular", sans-serif;
 }
 .form-group {
     margin-bottom: 20px;
@@ -67,12 +67,58 @@ body{
 }
 .form-group button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #5762D5;
+    color: #FCFCFC;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 .form-group button:hover {
     background-color: #0056b3;
+}
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    margin : 40px 0 0 0;
+}
+.contact-section h2 {
+    font-family: "Sora Bold", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #F0F0F0;
+    margin : 0 0 0 50px;
+}
+.contact-section p {
+    font-family: "Sora Regular", sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    color: #F0F0F0;
+    margin : 20px 0 0 50px;
+}
+.contact-images-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin : 10px 60px 0 60px;
+    max-height: 200px;
+}
+.numero-vert{
+    display: flex;
+    align-items: center;
+}
+.numero-vert p {
+    font-family: "Sora SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #F0F0F0;
+    margin: 0 0 0 10px;
+}
+.numero-vert-logo{
+    width: 50px;
+    height: 50px;
+}
+.logo-onde {
+    margin : 0;
+    width: 200px;
+    height: 100px;
 }
