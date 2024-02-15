@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora-Bold.ttf') format('truetype');
+    src: url('/fonts/Sora-ExtraBold.ttf') format('truetype');
+    src: url('/fonts/Sora-ExtraLight.ttf') format('truetype');
+    src: url('/fonts/Sora-Light.ttf') format('truetype');
+    src: url('/fonts/Sora-Medium.ttf') format('truetype');
+    src: url('/fonts/Sora-Regular.ttf') format('truetype');
+    src: url('/fonts/Sora-SemiBold.ttf') format('truetype');
+    src: url('/fonts/Sora-Thin.ttf') format('truetype');
+}
+/* Base Styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Sora, sans-serif;
+    background: #333;
+}
+
+h5 {
+    font-family: "Sora SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 20px;
+}
+
+#content-wrapBase {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 30px;
+}
+
+/* Form Styles */
+.form {
+    background: #141414;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.question-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.question {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.checkbox-box {
+    width: 300px; /* Adjust the width to fit your content */
+    height: 150px; /* Adjust the height to fit your content */
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    overflow: hidden; /* This ensures content doesn't overflow */
+    transition: border-color 0.3s ease;
+}
+.checkbox-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%; /* Ensure the content is centered vertically */
+    padding: 5px; /* Add some padding for spacing */
+}
+.checkbox-box img {
+    max-width: 100%;
+    max-height: 100%;
+}
+input[type="checkbox"] {
+    display: none; /* Hide the default checkbox */
+}
+input[type="checkbox"]:checked + label .checkbox-box::after {
+    content: "\2713"; /* Unicode checkmark symbol */
+    font-size: 20px;
+    color: #007bff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5c6bc0; /* Change as per your brand color */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #3f51b5; /* a shade darker on hover */
+}
