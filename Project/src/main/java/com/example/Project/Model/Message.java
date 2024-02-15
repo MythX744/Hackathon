@@ -2,27 +2,28 @@ package com.example.Project.Model;
 
 import jakarta.persistence.*;
 
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
+
 @Entity
-@Table(name = "message")
+@Table(name = "MESSAGES")
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "id_receiver")
-    private Long idReceiver;
-    @Column(name = "id_sender")
-    private Long idSender;
-    @Column(name = "message")
-    private String message;
 
-    public Message() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "sender_id")
+    private User sender;
+    @Column(name = "date")
+    private LocalDate date;
+    @ManyToOne
+    @JoinColumn(name = "receiver_id")
+    private User receiver;
+    @Column(name = "text", length = 500)
+    private String text;
 
-    public Message(Long idReceiver, Long idSender, String message) {
-        this.idReceiver = idReceiver;
-        this.idSender = idSender;
-        this.message = message;
-    }
 
     public Long getId() {
         return id;
@@ -32,38 +33,35 @@ public class Message {
         this.id = id;
     }
 
-    public Long getIdReceiver() {
-        return idReceiver;
+    public User getSender() {
+        return sender;
     }
 
-    public void setIdReceiver(Long idReceiver) {
-        this.idReceiver = idReceiver;
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 
-    public Long getIdSender() {
-        return idSender;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setIdSender(Long idSender) {
-        this.idSender = idSender;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
-    public String getMessage() {
-        return message;
+    public User getReceiver() {
+        return receiver;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
     }
 
-    @Override
-    public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", idReceiver=" + idReceiver +
-                ", idSender=" + idSender +
-                ", message='" + message + '\'' +
-                '}';
+    public String getText() {
+        return text;
     }
 
+    public void setText(String text) {
+        this.text = text;
+    }
 }

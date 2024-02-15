@@ -1,5 +1,4 @@
 package com.example.Project.Service.impl;
-
 import com.example.Project.DAO.SchoolDAO;
 import com.example.Project.Model.School;
 import com.example.Project.Service.ISchoolService;
@@ -7,56 +6,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SchoolService implements ISchoolService {
-    SchoolDAO schoolDAO;
+
+    private final SchoolDAO schoolRepo;
 
     @Autowired
-    public SchoolService(SchoolDAO schoolDAO) {
-        this.schoolDAO = schoolDAO;
+    public SchoolService(SchoolDAO theSchoolRepo){schoolRepo = theSchoolRepo;}
+
+    @Override
+    public School save(School school) {
+        return schoolRepo.save(school);
     }
 
     @Override
-    public void save(School school) {
-        schoolDAO.save(school);
+    public School get(Long id) {
+        return schoolRepo.getReferenceById(id);
+    }
+
+    @Override
+    public List<School> getAll() {
+        return schoolRepo.findAll();
+    }
+
+    @Override
+    public School update(School school) {
+        return schoolRepo.save(school);
     }
 
     @Override
     public void delete(Long id) {
-        schoolDAO.deleteById(id);
-    }
-
-    public School findById(Long id) {
-        Optional<School> result = schoolDAO.findById(id);
-
-        School school = null;
-
-        if (result.isPresent()) {
-            school = result.get();
-        }
-        else {
-            throw new RuntimeException("Did not find employee id - " + id);
-        }
-        return school;
-    }
-
-
-    @Override
-    public void update(School school) {
-        schoolDAO.save(school);
+        schoolRepo.deleteById(id);
     }
 
     @Override
-    public School findByEmail(String email) {
-        return (School) schoolDAO.findByEmail(email).orElse(null);
+    public School findSchoolByName(String name) {
+        return schoolRepo.findByName(name);
     }
 
     @Override
-    public List<School> findAll() {
-        return schoolDAO.findAll();
+    public boolean doesSchoolIdExist(Long id) {
+        return schoolRepo.existsById(id);
     }
-
-
 }
