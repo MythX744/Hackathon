@@ -1,16 +1,19 @@
 package com.example.Project.Service.impl;
 import com.example.Project.DAO.SchoolDAO;
 import com.example.Project.Model.School;
+import com.example.Project.Model.User;
 import com.example.Project.Service.ISchoolService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SchoolService implements ISchoolService {
 
-    private final SchoolDAO schoolRepo;
+    private SchoolDAO schoolRepo;
 
     @Autowired
     public SchoolService(SchoolDAO theSchoolRepo){schoolRepo = theSchoolRepo;}
@@ -41,8 +44,8 @@ public class SchoolService implements ISchoolService {
     }
 
     @Override
-    public School findSchoolByName(String name) {
-        return schoolRepo.findByName(name);
+    public School findByName(String name) {
+        return schoolRepo.findByName(name).orElse(null);
     }
 
     @Override
@@ -53,5 +56,24 @@ public class SchoolService implements ISchoolService {
     @Override
     public List<School> listSchoolsByCity(String city) {
         return schoolRepo.findSchoolsByCity(city);
+    }
+
+    @Override
+    public School findById(Long id) {
+        Optional<School> result = schoolRepo.findById(id);
+
+        School school = null;
+
+        if (result.isPresent()) {
+            school = result.get();
+        }
+        else {
+            throw new RuntimeException("Did not find employee id - " + id);
+        }
+        return school;
+    }
+
+    public Long findIdByName(String schoolName) {
+        return schoolRepo.findIdByName(schoolName).orElse(null);
     }
 }
