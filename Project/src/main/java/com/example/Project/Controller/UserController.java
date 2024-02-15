@@ -1,68 +1,116 @@
 package com.example.Project.Controller;
 
+import com.example.Project.Model.ResponseForm;
+import com.example.Project.Model.School;
 import com.example.Project.Model.User;
+import com.example.Project.Service.ISchoolService;
+import com.example.Project.Service.IUserService;
+import com.example.Project.Service.impl.SchoolService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import jakarta.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import com.example.Project.Service.impl.UserService;
+
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
 
 
 @Controller
 @RequestMapping("/User")
 public class UserController {
-    private final UserService userService;
+    private IUserService userService;
+    private ISchoolService schoolService;
     @Autowired
-    public UserController(UserService userService){
+    public UserController(UserService userService, SchoolService schoolService){
         this.userService = userService;
-
+        this.schoolService = schoolService;
     }
 
-    @GetMapping("/loadSignup")
-    public String showSignUpForm(Model model){
-        model.addAttribute("user", new User());
-
-        return "signup";
+    @GetMapping("/loadProfile")
+    public String showProfile(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        Set<ResponseForm> responses = user.getResponseForms();
+        model.addAttribute("responses", responses);
+        model.addAttribute("user", user);
+        return "profile";
     }
 
-    @PostMapping("/signup")
-    public String signUp(@ModelAttribute("user") @Valid User myUser, BindingResult bindingResult){
-        if (userService.findByEmail(myUser.getEmail())!=null) {
-            bindingResult.rejectValue("email", "error.user", "Email already has an account. Did you forget your password?");
-            return "signup";
-        }
-        userService.save(myUser);
-        return "login";
+
+    @PostMapping("/profile")
+    public User updateUser(@ModelAttribute("user") User user, Model model) {
+        userService.update(user);
+        return user;
     }
 
     @GetMapping("/loadLogin")
-    public String showLoginForm(Model model) {
-        model.addAttribute("user", new User());
+    public String getLoginPage(Model leModel) {
+        User theUser = new User();
+        leModel.addAttribute("user", theUser);
         return "login";
     }
+
     @PostMapping("/login")
-    public String login(@ModelAttribute("user") @Valid User myUser, BindingResult bindingResult, HttpSession session){
-        User authdUser = userService.login(myUser.getEmail(), myUser.getPassword());
-        if (authdUser != null){
-            session.setAttribute("loggedInUser", authdUser);
-            userService.updateActionTimeByUser(authdUser);
-            return "redirect:/index";
-        }else {
-            bindingResult.rejectValue("password", "error.user", "Invalid username or password");
-            return "login";
+    public String login(HttpSession session, @ModelAttribute("user") User user) {
+        String email = user.getEmail();
+        String password = user.getPassword();
+        if (userService.validateUser(email, password)) {
+            session.setAttribute("user", user);
+            return "redirect:/navigation/home";
+        } else {
+            System.out.println("Invalid credentials");
+            return "redirect:/User/loadLogin";
         }
     }
 
-    @RequestMapping("/logout")
+    @GetMapping("/login/guest")
+    public String signInAsGuest(HttpSession session) {
+        User guestUser = new User();
+        guestUser.setFullname("guest");
+        session.setAttribute("user", guestUser);
+        return "redirect:/navigation/home";
+    }
+
+    @GetMapping("/loadSignup")
+    public String getRegPage(@ModelAttribute("user") User user){
+        return "signup";
+    }
+    @PostMapping("/signup")
+    public String saveUser(@ModelAttribute("user") User user, BindingResult result, Model model, @RequestParam("school") String schoolName){
+
+        Long schoolId = schoolService.findIdByName(schoolName); // Attempt to find the school ID by name
+        School school;
+
+        if (schoolId == null) {
+            // If no existing school found, create a new one
+            school = new School();
+            school.setName(schoolName);
+            school = schoolService.save(school); // Save the new school and reuse it to get a managed entity with an ID
+        } else {
+            school = schoolService.findById(schoolId); // If found, fetch the full School entity
+        }
+
+        if (school != null) {
+            user.setSchool(school); // Associate the school with the user
+            userService.save(user); // Save the user
+            System.out.println("User saved with school: " + school.getName());
+        } else {
+            System.out.println("Failed to associate school with user.");
+            // Handle the error appropriately, maybe redirect to an error page or show an error message
+            return "signup";
+        }
+
+        return "redirect:/User/loadLogin";
+    }
+
+    @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "index";
+        return "redirect:/User/loadLogin";
     }
 
 }

@@ -158,6 +158,19 @@ public class User {
         this.receivedMessages = receivedMessages;
     }
 
+    public User(String fullname, String email, String password, LocalDate dateOfBirth, String profile, String phoneNumber, School school, Set<ResponseForm> responseForms, List<Message> sentMessages, List<Message> receivedMessages) {
+        this.fullname = fullname;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.profile = profile;
+        this.phoneNumber = phoneNumber;
+        this.school = school;
+        this.responseForms = responseForms;
+        this.sentMessages = sentMessages;
+        this.receivedMessages = receivedMessages;
+    }
+
     @Override
     public String toString() {
         return "User{" +

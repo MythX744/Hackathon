@@ -3,6 +3,7 @@ package com.example.Project.Service.impl;
 import com.example.Project.DAO.UserDAO;
 import com.example.Project.Model.User;
 import com.example.Project.Service.IUserService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class UserService implements IUserService {
         return userRepo.getReferenceById(userId);
     }
 
-    @Override
+    @Transactional
     public User save(User user) {
         return userRepo.save(user);
     }
@@ -47,7 +48,8 @@ public class UserService implements IUserService {
 
     @Override
     public User findByEmail(String email) {
-        return userRepo.findByEmail(email);
+        Optional<User> user = userRepo.findByEmail(email);
+        return user.orElse(null);
     }
 
     @Override
@@ -65,6 +67,19 @@ public class UserService implements IUserService {
         user.setActionTime(LocalDateTime.now());
         userRepo.save(user);
     }
+
+    public boolean validateUser(String email, String password) {
+        User user = userRepo.findByEmail(email).orElse(null);
+        if (user != null && user.getPassword().equals(password)){
+            return true;
+        }
+        return false;
+    }
+
+    public void update(User user) {
+        userRepo.save(user);
+    }
+
 
 /*    @Override
     public List<User> getLastActiveUsers(int count) {

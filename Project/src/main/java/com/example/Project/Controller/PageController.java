@@ -28,6 +28,11 @@ public class PageController {
         return "";
     }
 
+    @RequestMapping("/testimony")
+    public String LoadTestimony(Model model){
+        return "testimony";
+    }
+
     @RequestMapping("/User/loadProfile")
     public String LoadProfile(){
         return "profile";

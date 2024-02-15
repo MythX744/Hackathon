@@ -30,35 +30,35 @@
             <div class="login__inputs">
                 <div>
                     <label for="input-fullname" class="login__label">Full Name</label>
-                    <input type="text" placeholder="Enter your full name" required class="login__input" id="input-fullname" th:field="*{fullname}">
+                    <input type="text" placeholder="Enter your full name" name="fullname" required class="login__input" id="input-fullname" th:field="*{fullname}">
                 </div>
 
                 <div>
                     <label for="input-email" class="login__label">Email</label>
-                    <input type="email" placeholder="Enter your email address" required class="login__input" id="input-email" th:field="*{email}">
+                    <input type="email" placeholder="Enter your email address" name="email" required class="login__input" id="input-email" th:field="*{email}">
                 </div>
 
                 <div>
                     <label for="input-pass" class="login__label">Password</label>
                     <div class="login__box">
-                        <input type="password" placeholder="Enter your password" required class="login__input" id="input-pass" th:field="*{password}">
+                        <input type="password" placeholder="Enter your password" name="password" required class="login__input" id="input-pass" th:field="*{password}">
                         <i class="ri-eye-off-line login__eye" id="input-icon"></i>
                     </div>
                 </div>
 
                 <div>
                     <label for="input-dob" class="login__label">Date of Birth</label>
-                    <input type="date" required class="login__input" id="input-dob" th:field="*{dateOfBirth}">
+                    <input type="date" required class="login__input" id="input-dob" name="dateOfBirth" th:value="${formattedDateOfBirth}">
                 </div>
 
                 <div>
                     <label for="input-school" class="login__label">School</label>
-                    <input type="text" required class="login__input" id="input-school" th:field="*{school}">
+                    <input type="text" required class="login__input" id="input-school" name="school" th:field="*{school}">
                 </div>
 
                 <div>
                     <label for="input-profile" class="login__label">Profile</label>
-                    <select id="input-profile" class="login__input" th:field="*{profile}" required>
+                    <select id="input-profile" class="login__input" name="profile" th:field="*{profile}" required>
                         <option value="child">Child</option>
                         <option value="specialist">Specialist</option>
                         <option value="academic">Academic Referent</option>
@@ -68,7 +68,9 @@
 
             <div class="login__buttons">
                 <button type="submit" class="login__button">Sign Up</button>
+                <a th:href="@{/User/loadLogin}" class="login__forgot" style="align-content: center">Already have an account</a>
             </div>
+
         </form>
 
     </div>
