@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/base.css}" />
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/lightHarassment.css}" />
+    <title>Light Harassment</title>
 </head>
 <body>
 <div id="content-wrapBase">
     <div th:replace="fragments/header :: header" > </div>
     <main id="mainBase">
-        There are times when you can ignore bullying, times when you should respond, and times when you should tell a trusted adult. It’s important to know the difference.
-        Do you know what to do when you’re in a bullying situation? Do you ignore the bullying? Do you take a stance and respond? Do you tell? In a tough situation, it can be hard to decide. Evaluating the bully’s words and actions can help you figure out what to do.
-        Start by asking yourself, is the action or comment hurtful but not intimidating?
-        a onetime offense or repetitive?
-        something that can easily be ignored? hostile or threatening?
-        Next, use these guidelines to help you determine which course of action to take:
-        <ol>
-            <li>First :</li>
-            <p>Ignore bullies who are just trying to get a rise out of you, if their words or actions aren’t a big deal. Some situations are short-lived and die down on their own.</p>
-            <li>First :</li>
-            <p>Respond to any action or comment that is not hostile or threatening. Bullies prefer easy targets, not ones who stand up to them. If you take a stance and respond, they may pull back and leave you alone,
-            or they may test you to see whether you’ll cave in. When a bully decides to test you, have a firm comeback, like “That’s not true,” or “Stop spreading those lies.”</p>
-            <li>First :</li>
-            Tell a trusted adult immediately if your physical safety is being threatened. No one has the right to harm you, and any threat to do so is serious. Also, tell if someone has posted sexual material about you online. And finally, tell if you feel like you’re spiraling into a black hole that you can’t get out of.
-            When you’re targeted, you may feel like there’s no end in sight, but that’s not true. Adults can help.<p>
-        </ol>
+        <div class="text-section">
+            <h2>Your result :</h2>
+            <p>There are times when you can ignore bullying, times when you should respond, and times when you should tell a trusted adult. It’s important to know the difference.
+            Do you know what to do when you’re in a bullying situation? Do you ignore the bullying? Do you take a stance and respond? Do you tell? In a tough situation, it can be hard to decide. Evaluating the bully’s words and actions can help you figure out what to do.
+            Start by asking yourself, is the action or comment hurtful but not intimidating?
+            a onetime offense or repetitive?
+            something that can easily be ignored? hostile or threatening?<br>
+            Next, use these guidelines to help you determine which course of action to take:</p>
+            <ul>
+                <li>First :</li>
+                <p>Ignore bullies who are just trying to get a rise out of you, if their words or actions aren’t a big deal. Some situations are short-lived and die down on their own.</p>
+                <li>Second :</li>
+                <p>Respond to any action or comment that is not hostile or threatening. Bullies prefer easy targets, not ones who stand up to them. If you take a stance and respond, they may pull back and leave you alone,
+                or they may test you to see whether you’ll cave in. When a bully decides to test you, have a firm comeback, like “That’s not true,” or “Stop spreading those lies.”</p>
+                <li>Third :</li>
+                <p>Tell a trusted adult immediately if your physical safety is being threatened. No one has the right to harm you, and any threat to do so is serious. Also, tell if someone has posted sexual material about you online. And finally, tell if you feel like you’re spiraling into a black hole that you can’t get out of.
+                When you’re targeted, you may feel like there’s no end in sight, but that’s not true. Adults can help.</p>
+            </ul>
+        </div>
     </main>
     <div th:replace="fragments/footer :: footer" > </div>
 </div>
