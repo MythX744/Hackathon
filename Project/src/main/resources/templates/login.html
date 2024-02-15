@@ -1,0 +1,32 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+</head>
+<body>
+<div class="login-wrapper">
+    <div class="login-box">
+        <h2 class="title">Sign In</h2>
+        <form th:action="@{/login}" th:object="${user}" method="post" class="login-form">
+            <div class="input-block">
+                <input type="text" placeholder="Email" name="email" th:field="*{email}" required class="input-field">
+            </div>
+            <div class="input-block">
+                <input type="password" placeholder="Password" name="password" th:field="*{password}" required class="input-field">
+            </div>
+            <div class="action-block">
+                <button type="submit" class="action-button">Log In</button>
+                <button type="button" class="action-button outline" onclick="window.location.href='/signup'">Sign Up</button>
+            </div>
+        </form>
+        <div class="alternative-login">
+            Or sign in as a <a href="#" class="guest-link">guest</a>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/login.js}"></script>
+</body>
+</html>
