@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
     @GetMapping("/")
     public String home(Model model) {
-        return "";
+        return "base.html";
     }
 }
