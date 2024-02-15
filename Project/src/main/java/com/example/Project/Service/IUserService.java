@@ -22,5 +22,5 @@ public interface IUserService {
 
     void updateActionTimeByUser(User user);
 
-    List<User> getLastActiveUsers(int count);
+    //List<User> getLastActiveUsers(int count);
 }

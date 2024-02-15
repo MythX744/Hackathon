@@ -15,6 +15,10 @@ public class ResponseCampaign {
     @JoinColumn(name="campaign_id", nullable=false)
     private Campaign campaign;
 
+    public ResponseCampaign() {
+
+    }
+
     public Long getId() {
         return id;
     }
