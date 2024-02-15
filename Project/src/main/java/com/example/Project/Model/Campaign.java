@@ -59,4 +59,23 @@ public class Campaign {
     public void setResponses(Set<ResponseCampaign> responses) {
         this.responses = responses;
     }
+
+    public Campaign(Long id, String name, LocalDate date, School school, Set<ResponseCampaign> responses) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.school = school;
+        this.responses = responses;
+    }
+
+    @Override
+    public String toString() {
+        return "Campaign{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", school=" + school +
+                ", responses=" + responses +
+                '}';
+    }
 }

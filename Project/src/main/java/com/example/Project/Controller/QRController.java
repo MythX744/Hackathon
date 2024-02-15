@@ -3,6 +3,7 @@ package com.example.Project.Controller;
 import com.example.Project.Helper.CodeGen;
 import java.awt.image.BufferedImage;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,10 @@ import org.springframework.http.ResponseEntity;
 @RequestMapping("/barcodes")
 public class QRController {
     @GetMapping(value = "/ean13/{campaignId}&{size}", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<BufferedImage> zebraEAN13Barcode(@PathVariable String campaignId, @PathVariable int size)
+    public ResponseEntity<BufferedImage> zebraEAN13Barcode(@PathVariable String campaignId, @PathVariable int size, HttpServletRequest req)
             throws Exception {
-        //TODO: modify link to be dynamic
 
-        String campaignLink = "link/" + campaignId;
+        String campaignLink = getHomeUrl(req)+"/" + campaignId;
         return okResponse(CodeGen.generateQRCodeImage(campaignLink, size));
     }
 
@@ -32,6 +32,9 @@ public class QRController {
         return new BufferedImageHttpMessageConverter();
     }
 
+    private String getHomeUrl(HttpServletRequest request) {
+        return String.format("%s://%s:%d",request.getScheme(),  request.getServerName(), request.getServerPort());
+    }
     private <T> ResponseEntity<T> okResponse(T body) {
         return new ResponseEntity<>(body, HttpStatus.OK);
     }

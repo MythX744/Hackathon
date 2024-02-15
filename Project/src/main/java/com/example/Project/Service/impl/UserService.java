@@ -5,6 +5,8 @@ import com.example.Project.Model.User;
 import com.example.Project.Service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 import java.util.List;
@@ -52,4 +54,21 @@ public class UserService implements IUserService {
     public boolean doesUserIdExist(Long id) {
         return userRepo.existsById(id);
     }
+
+    @Override
+    public int countUsersByProfile(String profile) {
+        return userRepo.countByProfile(profile);
+    }
+
+    @Override
+    public void updateActionTimeByUser(User user) {
+        user.setActionTime(LocalDateTime.now());
+        userRepo.save(user);
+    }
+
+    @Override
+    public List<User> getLastActiveUsers(int count) {
+        return userRepo.findLastActiveUsers(count);
+    }
+
 }

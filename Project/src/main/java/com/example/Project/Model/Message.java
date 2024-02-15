@@ -64,4 +64,24 @@ public class Message {
     public void setText(String text) {
         this.text = text;
     }
+
+    public Message(Long id, User sender, LocalDate date, User receiver, String text) {
+        this.id = id;
+        this.sender = sender;
+        this.date = date;
+        this.receiver = receiver;
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", sender=" + sender +
+                ", date=" + date +
+                ", receiver=" + receiver +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
+

@@ -27,6 +27,7 @@ public class UserController {
     @GetMapping("/loadSignup")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
+
         return "signup";
     }
 
@@ -50,6 +51,7 @@ public class UserController {
         User authdUser = userService.login(myUser.getEmail(), myUser.getPassword());
         if (authdUser != null){
             session.setAttribute("loggedInUser", authdUser);
+            userService.updateActionTimeByUser(authdUser);
             return "redirect:/index";
         }else {
             bindingResult.rejectValue("password", "error.user", "Invalid username or password");

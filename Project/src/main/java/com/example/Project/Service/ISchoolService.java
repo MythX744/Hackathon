@@ -18,4 +18,6 @@ public interface ISchoolService {
     School findSchoolByName(String name);
 
     boolean doesSchoolIdExist(Long id);
+
+    List<School> listSchoolsByCity(String city);
 }

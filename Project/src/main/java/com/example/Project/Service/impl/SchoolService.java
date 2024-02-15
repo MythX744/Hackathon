@@ -49,4 +49,9 @@ public class SchoolService implements ISchoolService {
     public boolean doesSchoolIdExist(Long id) {
         return schoolRepo.existsById(id);
     }
+
+    @Override
+    public List<School> listSchoolsByCity(String city) {
+        return schoolRepo.findSchoolsByCity(city);
+    }
 }

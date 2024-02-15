@@ -57,4 +57,23 @@ public class School {
     public void setCampaigns(Set<Campaign> campaigns) {
         this.campaigns = campaigns;
     }
+
+    public School(Long id, String name, String city, Set<User> users, Set<Campaign> campaigns) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.users = users;
+        this.campaigns = campaigns;
+    }
+
+    @Override
+    public String toString() {
+        return "School{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", users=" + users +
+                ", campaigns=" + campaigns +
+                '}';
+    }
 }
