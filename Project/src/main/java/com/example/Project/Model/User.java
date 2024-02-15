@@ -2,6 +2,7 @@ package com.example.Project.Model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,6 +36,12 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<ResponseForm> responseForms;
+
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
+    private List<Message> sentMessages;
+
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
+    private List<Message> receivedMessages;
 
     public Long getId() {
         return id;
@@ -106,5 +113,21 @@ public class User {
 
     public void setResponseForms(Set<ResponseForm> responseForms) {
         this.responseForms = responseForms;
+    }
+
+    public List<Message> getSentMessages() {
+        return sentMessages;
+    }
+
+    public void setSentMessages(List<Message> sentMessages) {
+        this.sentMessages = sentMessages;
+    }
+
+    public List<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(List<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
     }
 }
