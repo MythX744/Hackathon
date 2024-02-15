@@ -1,0 +1,40 @@
+body{
+    margin:0;
+    background-color: #333333;
+    font-family: "Sora", sans-serif;
+}
+
+.text-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 80px 200px 100px 200px;
+}
+.text-section h2 {
+    font-family: "Sora Bold", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #F0F0F0;
+}
+.text-section li {
+    font-family: "Sora Regular", sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    color: #FF2E2E;
+    margin: 10px 0;
+}
+.text-section h5 {
+    font-family: "Sora SemiBold", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #F0F0F0;
+    margin: 20px;
+}
+.text-section p {
+    font-family: "Sora Regular", sans-serif;
+    font-weight: 400;
+    font-size: 19px;
+    padding: 4px;
+    color: #F0F0F0;
+}

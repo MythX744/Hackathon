@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/testimony.css}" />
+    <title>Testify</title>
+</head>
+<body>
+<div id="content-wrapBase">
+    <div th:replace="fragments/header :: header" > </div>
+    <main id="mainBase">
+        <div class="text-section">
+            <h2>Are you a witness ?</h2>
+            <p>&nbsp;&nbsp;If you witness school harassment, it is crucial to act promptly and it is totally understandable to feel upset and overwhelmed.
+                Your courage in coming forward is commendable. Remember you are not alone.</p>
+            <br>
+            <h5>Here what you can do :</h5>
+            <ul>
+                <li>Intervene :</li>
+                <p>&nbsp;&nbsp;Calmly and assertively address the situation, telling the bully to stop and emphasizing the importance of treating others with respect. </p>
+                <li>Report: </li>
+                <p>&nbsp;&nbsp;Inform a teacher, school staff, or any authority figure about the bullying incident. Provide details to help them understand the situation.</p>
+                <li>Support the victim: </li>
+                <p>&nbsp;&nbsp;Offer comfort and support to the person being bullied. Let them know they're not alone and encourage them to report the incident as well.</p>
+                <li>Promote empathy: </li>
+                <p>&nbsp;&nbsp;Encourage a positive and inclusive atmosphere by fostering empathy and kindness among students. Highlight the importance of understanding and respecting each other's differences.</p>
+                <li>Document incidents: </li>
+                <p>&nbsp;&nbsp;Keep a record of any witnessed bullying incidents, including dates, times, and details. This information may be helpful when reporting the issue to school authorities or to the green number <b>2511</b><p>
+            </ul>
+        </div>
+    </main>
+    <div th:replace="fragments/footer :: footer" > </div>
+</div>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>
