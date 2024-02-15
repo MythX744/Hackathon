@@ -9,13 +9,40 @@
 
     <!--=============== CSS ===============-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/signup.css}" />
+    <style>
+        body {
+            background-color: #ccd1ff;
+        }
+        .logo {
+            width: 200px;
+            height:auto;
+            margin: 0 0 0 20px;
+            cursor: pointer;
+        }
+        .container {
+            margin : 40px 0 0 0;
+            height: auto;
+        }
+        .login__content {
+            height: 700px;
+        }
+        .login__form {
+            margin : 72px 72px 72px 0;
+            max-height: 600px; /* Set the maximum height at which you want the container to become scrollable */
+            overflow-y: auto;
+        }
+        .login__form::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 
     <title>Sign Up</title>
 </head>
 <body>
+<img class="logo" src="/images/logo.png" alt="logo">
 <div class="container">
     <div class="login__content">
-        <img th:src="@{/images/bg-login.png}" alt="login image" class="login__img">
+        <img th:src="@{/images/bg-login.webp}" alt="login image" class="login__img">
 
         <form th:action="@{/User/signup}" method="post" class="login__form" th:object="${user}">
             <div>
@@ -80,3 +107,9 @@
 <script th:src="@{/js/login.js}"></script>
 </body>
 </html>
+<script>
+    const logo=document.querySelector('.logo');
+    logo.addEventListener('click',()=>{
+        location.href='/navigation/home';
+    })
+</script>
