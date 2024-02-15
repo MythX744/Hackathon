@@ -2,6 +2,7 @@ package com.example.Project.Model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,14 +13,16 @@ public class User {
     private Long id;
 
     @Column(name = "first_name")
-    private String fullname;
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
 
     @Column(name = "email")
     private String email;
 
     @Column(name = "password")
     private String password;
-
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
@@ -36,6 +39,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<ResponseForm> responseForms;
 
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
+    private List<Message> sentMessages;
+
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
+    private List<Message> receivedMessages;
+
     public Long getId() {
         return id;
     }
@@ -44,20 +53,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -108,30 +117,27 @@ public class User {
         this.responseForms = responseForms;
     }
 
-    public User() {
+    public List<Message> getSentMessages() {
+        return sentMessages;
     }
 
-    public User(String fullname, String email, String password, LocalDate dateOfBirth, String profile, String phoneNumber, School school, Set<ResponseForm> responseForms) {
-        this.fullname = fullname;
-        this.email = email;
-        this.password = password;
-        this.dateOfBirth = dateOfBirth;
-        this.profile = profile;
-        this.phoneNumber = phoneNumber;
-        this.school = school;
-        this.responseForms = responseForms;
+    public void setSentMessages(List<Message> sentMessages) {
+        this.sentMessages = sentMessages;
     }
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", fullname='" + fullname + '\'' +
-                ", email='" + email + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", profile='" + profile + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", school=" + school +
-                ", responseForms=" + responseForms +
-                '}';
+
+    public List<Message> getReceivedMessages() {
+        return receivedMessages;
+    }
+
+    public void setReceivedMessages(List<Message> receivedMessages) {
+        this.receivedMessages = receivedMessages;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

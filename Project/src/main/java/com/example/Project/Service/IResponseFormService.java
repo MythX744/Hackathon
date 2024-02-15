@@ -1,12 +1,18 @@
 package com.example.Project.Service;
 
 import com.example.Project.Model.ResponseForm;
+import java.util.List;
 
 public interface IResponseFormService {
-    void save(ResponseForm responseForm);
-    ResponseForm findById(Long id);
-    void deleteById(Long id);
-    void update(ResponseForm responseForm);
-    java.util.List<ResponseForm> findAll();
+    ResponseForm saveResponseForm(ResponseForm responseForm);
 
+    ResponseForm updateResponseForm(ResponseForm responseForm);
+
+    void deleteResponseForm(Long id);
+
+    ResponseForm findResponseFormById(Long id);
+
+    List<ResponseForm> findAllResponseForms();
+
+    boolean doesResponseFormIdExist(Long id);
 }

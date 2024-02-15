@@ -8,6 +8,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import java.awt.image.BufferedImage;
 
 public class CodeGen {
+
     public static BufferedImage generateQRCodeImage(String barcodeText, int size) throws Exception {
         QRCodeWriter barcodeWriter = new QRCodeWriter();
         BitMatrix bitMatrix =
