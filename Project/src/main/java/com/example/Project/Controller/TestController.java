@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("message", "Thymeleaf is working!");
-        return "redirect:/User/loadLogin";
+        return "testimony";
     }
 }
