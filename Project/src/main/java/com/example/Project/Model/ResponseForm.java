@@ -62,4 +62,23 @@ public class ResponseForm {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public ResponseForm(Long id, String text, LocalDate date, String decision, User user) {
+        this.id = id;
+        this.text = text;
+        this.date = date;
+        this.decision = decision;
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseForm{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", date=" + date +
+                ", decision='" + decision + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }
