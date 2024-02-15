@@ -17,6 +17,9 @@ public class User {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
@@ -49,6 +52,13 @@ public class User {
         this.fullname = fullname;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getEmail() {
         return email;
@@ -99,6 +109,17 @@ public class User {
     }
 
     public User() {
+    }
+
+    public User(String fullname, String email, String password, LocalDate dateOfBirth, String profile, String phoneNumber, School school, Set<ResponseForm> responseForms) {
+        this.fullname = fullname;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.profile = profile;
+        this.phoneNumber = phoneNumber;
+        this.school = school;
+        this.responseForms = responseForms;
     }
     @Override
     public String toString() {
