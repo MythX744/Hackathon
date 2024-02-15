@@ -50,6 +50,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+<<<<<<< Updated upstream
 			<version>8.0.25</version>
 		</dependency>
 		<dependency>
@@ -72,6 +73,9 @@
 			<groupId>com.google.zxing</groupId>
 			<artifactId>javase</artifactId>
 			<version>3.5.3</version>
+=======
+			<version>8.0.28</version>
+>>>>>>> Stashed changes
 		</dependency>
 	</dependencies>
 
