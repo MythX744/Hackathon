@@ -1,0 +1,106 @@
+/* login.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #6dd5ed, #2193b0); /* Background with a linear gradient */
+    overflow: hidden; /* Hide the overflow to ensure shapes don't cause scrolling */
+}
+
+/* Background shapes with pseudo-elements for visual interest */
+body::before {
+    content: '';
+    position: fixed; /* Fixed position to cover the whole screen */
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%), radial-gradient(circle, transparent 30%, rgba(255, 255, 255, 0.1) 70%);
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    transform: rotate(15deg);
+}
+
+/* Main login box styling */
+.login-wrapper {
+    width: 100%;
+    max-width: 480px; /* Wider box for better aesthetics */
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.95); /* Slightly transparent white for depth */
+    border-radius: 8px;
+    padding: 50px; /* More padding for a better layout */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    text-align: center;
+    width: 100%; /* Use 100% of the .login-wrapper width */
+}
+
+.title {
+    font-size: 2.5em; /* Larger title font */
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.input-block {
+    margin-bottom: 25px;
+}
+
+.input-field {
+    width: calc(100% - 30px); /* Full width minus padding */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* More pronounced rounded edges */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+}
+
+.action-block {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+}
+
+.action-button {
+    padding: 15px;
+    margin: 10px 0; /* More margin for separation */
+    border: none;
+    border-radius: 25px; /* Matching border-radius with input fields */
+    background-color: #2193b0;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.action-button:hover {
+    background-color: #6dd5ed; /* Lighter shade on hover */
+    transform: translateY(-3px); /* Slight raise effect on hover */
+}
+
+.outline {
+    background: none;
+    border: 2px solid #2193b0;
+    color: #2193b0;
+}
+
+.outline:hover {
+    background: #2193b0;
+    color: white;
+}
+
+.alternative-login {
+    margin-top: 30px; /* More spacing from buttons to the guest link */
+}
+
+.guest-link {
+    color: #2193b0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.guest-link:hover {
+    text-decoration: underline;
+}
