@@ -22,7 +22,7 @@
     </div>
     <div class="bottom-section">
         <div class="report-section">
-            <a href="" class="report-link">
+            <a th:href="@{/User/report}" class="report-link">
                 <div class="report-section-sub">
                   <h2>Report</h2>
                   <p>Report</p>
@@ -39,7 +39,7 @@
             </div>
     </div>
     <div class="emergency-section">
-      <a href="" class="emergency-button">Emergency</a>
+      <a th:href="@{/navigation/severeHarassment}" class="emergency-button">Emergency</a>
     </div>
   </main>
   <div th:replace="fragments/footer :: footer" > </div>
