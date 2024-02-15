@@ -1,0 +1,123 @@
+/* Base Styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #333;
+}
+
+#content-wrapBase {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.form_content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 30px;
+}
+
+/* Form Styles */
+.form {
+    max-width: 600px;
+    background: #141414;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form label {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+    color: white;
+}
+
+.form input[type="text"],
+.form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd; /* light grey border */
+    border-radius: 5px;
+    box-sizing: border-box; /* to include padding in the width */
+}
+
+.form select {
+    cursor: pointer;
+}
+
+.form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5c6bc0; /* Change as per your brand color */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+    background-color: #3f51b5; /* a shade darker on hover */
+}
+
+
+/* ... existing styles ... */
+
+/* Styles for fieldset and legend for radio buttons */
+.form fieldset {
+    border: none;
+    margin: 20px 0;
+}
+
+.form legend {
+    font-weight: bold;
+    color: white;
+}
+
+/* Styles for radio buttons */
+.form label {
+    color: white;
+    margin-right: 10px;
+}
+
+.form input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Styles for textarea to match the design */
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd; /* light grey border */
+    border-radius: 5px;
+    background: #262626; /* dark background */
+    color: white; /* text color */
+    font-family: Arial, sans-serif; /* matching the font */
+    box-sizing: border-box; /* to include padding in the width */
+    margin: 10px 0; /* margin for spacing */
+}
+
+/* Adjustments for better visibility of text inside inputs and textarea */
+.form input[type="text"],
+.form select,
+.form textarea {
+    background-color: #262626; /* Darker background for contrast */
+    color: #ddd; /* Light text for visibility */
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+    .form {
+        margin: 20px;
+    }
+}
+
+

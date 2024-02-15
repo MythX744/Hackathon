@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/responseForm.css}" />
+    <title>Form</title>
+</head>
+<body>
+<div id="content-wrapBase">
+    <div th:replace="fragments/header :: header" > </div>
+    <main id="mainBase">
+        <div class="form_content">
+            <form th:action="@{/ResponseForm/submitResponse}" th:object="${form}" method="post" class="form">
+                <!-- Add your form fields here -->
+                <fieldset>
+                    <legend>Are you experiencing harassment in your school?</legend>
+                    <label>
+                        <input type="radio" name="question1" value="yes" required> Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="question1" value="no" required> No
+                    </label>
+                </fieldset>
+
+                <label for="question2">If you have been targeted by a bully, you have come to the right place. So tell me what are the types of harassment ?</label>
+                <select id="question2" name="question2" required>
+                    <option value="">--Select a Type--</option>
+                    <option th:value="verbal" th:text="Verbal"></option>
+                    <option th:value="psychological" th:text="Psychological"></option>
+                    <option th:value="physical" th:text="Physical"></option>
+                    <option th:value="social" th:text="Social"></option>
+                </select>
+
+                <label for="question3">Are you in danger ? If yes, who is it?</label>
+                <input type="text" id="question3" name="question3" required>
+
+                <label for="question4">Tell me how bullying is affection your life</label>
+                <input type="text" id="question4" name="question4" required>
+
+                <label for="question5">Did you report it to anyone or talked about it ?</label>
+                <input type="text" id="question5" name="question5" required>
+
+                <label for="question6">Can you tell me about a time when something happened at school that made you feel upset or uncomfortable?</label>
+                <textarea id="question6" name="question6" required rows="4"></textarea>
+
+                <label for="question7">How can we help you ? Do you want to call a doctor, your parents ... ?</label>
+                <input type="text" id="question7" name="question7" required>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+    <div th:replace="fragments/footer :: footer" > </div>
+</div>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>
