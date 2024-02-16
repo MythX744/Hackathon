@@ -158,7 +158,12 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 40px 0 0 0;
+    margin: 60px 0 0 0;
+}
+.emergency-image {
+    height: 50px;
+    width: 50px;
+    margin : 0 20px 0 0;
 }
 .emergency-button {
     display: flex;
@@ -184,7 +189,50 @@ h3 {
     transform: translateY(-0.75rem);
     transition : transform 250ms;
 }
+.description-section2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin : 60px 0 0 0;
+}
+.description-section2 .description {
+    width:40%;
+    height: inherit;
+    padding: 80px 60px 60px 60px;
+    background-color: #F7F7F7;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
 
+.description-section2 .description:hover {
+    background-color: #999ed0;
+}
+
+.description-section2 .description h2 {
+    font-family: "Sora SemiBold", sans-serif;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #555;
+    margin: 0px 0px 60px 0px;
+}
+.description-section2 .description p {
+    font-family: "Sora Regular", sans-serif;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #555;;
+}
+.description-section2 img {
+    width: 60%;
+    height: 600px;
+    object-fit: cover;
+    flex: 1;
+    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
 footer {
     font-family: "Sora Regular", sans-serif;
     font-weight: 400;
