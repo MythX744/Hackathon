@@ -114,20 +114,32 @@ public class UserController {
     @GetMapping("/report")
     public String processLink(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user"); // Directly retrieve the user object from the session
-        System.out.println("User: " + user.getFullname());
         if (user == null) {
             return "redirect:/User/loadLogin"; // Redirect if no user is found in the session
         } else if ("guest".equals(user.getFullname())) {
-            return "modal";
+            return "true";
         } else {
             LocalDate dob = user.getDateOfBirth();
+            int age = 0;
             if (dob != null) {
                 LocalDate currentDate = LocalDate.now();
-                int age = Period.between(dob, currentDate).getYears();
+                age = Period.between(dob, currentDate).getYears();
                 System.out.println("Age: " + age);
-                model.addAttribute("age", age); // Add age to model
             }
-            return "test"; // Return the view name
+            if (age < 12) {
+                return "redirect:/navigation/loadResponseFormChild";
+            } else {
+                return "redirect:/navigation/loadResponseForm";
+            }
+        }
+    }
+
+    @PostMapping("/age-filter")
+    public String submitAge(@RequestBody String age) {
+        if (age == "under-12") {
+            return "redirect:/navigation/loadResponseFormChild";
+        } else {
+            return "redirect:/navigation/loadResponseForm";
         }
     }
 

@@ -42,4 +42,16 @@ public class PageController {
     public String LoadProfile(){
         return "profile";
     }
+
+    @RequestMapping("/loadResponseFormChild")
+    public String LoadResponseFormChild(){
+        return "responseFormChild";
+    }
+
+    @RequestMapping("/loadResponseForm")
+    public String LoadResponseForm(){
+        return "responseForm";
+    }
+
+
 }

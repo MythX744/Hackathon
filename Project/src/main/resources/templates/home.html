@@ -10,7 +10,7 @@
   <main id="mainBase">
     <div class="top-section">
       <div class="subheader">
-        <a th:href="@{/User/logout}" class="SignUp-button">Sign Up</a>
+        <a th:href="@{/User/loadLogin}" class="SignUp-button">Sign Up</a>
       </div>
       <div class="description-section">
         <div class="description">
@@ -67,7 +67,7 @@
   });
 
   function checkConditionAndShowModal() {
-      fetch('/verify-condition')
+      fetch('/User/report')
           .then(response => {
               if (!response.ok) {
                   throw new Error('Network response was not ok');
@@ -86,33 +86,29 @@
           });
   }
 
-  // Function to show modal
   function showModal() {
       document.getElementById("myModal").style.display = "block";
   }
 
-  // Function to close modal
   function closeModal() {
       document.getElementById("myModal").style.display = "none";
   }
 
-  // Function to submit age form
   function submitAge() {
       var age = document.querySelector('input[name="age"]:checked').value;
 
-      // Example: Send age to Spring route using fetch
-      fetch('/submit-age', {
+      fetch('/User/age-filter', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ age: age }),
+          body: JSON.stringify(age),
       })
           .then(response => {
               if (!response.ok) {
                   throw new Error('Network response was not ok');
               }
-              return response.json();
+              return response.text();
           })
           .then(data => {
               console.log('Age submitted successfully:', data);
@@ -122,7 +118,4 @@
               console.error('There was a problem with your submission:', error);
           });
   }
-
-  // Call function to check condition and show modal
-  checkConditionAndShowModal();
 </script>
