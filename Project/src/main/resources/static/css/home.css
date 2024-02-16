@@ -32,24 +32,38 @@ a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    height: 300px;
 }
 .logo{
     width: 250px;
     height: auto;
 }
-h2 {
-    font-family: "Sora Bold", sans-serif;
-    font-weight: 700;
+h3 {
+    font-family: "Sora SemiBold", sans-serif;
+    font-weight: 600;
     font-size: 24px;
+}
+#quote-container {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 600px;
+    transition: opacity 0.5s ease;
+}
+#quote {
+    font-size: 24px;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 .bottom-section {
     display: flex;
-    margin-top: 20px;
     height: 400px;
 }
 .report-section {
     background-color: #5762D5;
     box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    border-color: #555555;
+    border: 1px;
 }
 .report-link {
     display: block;
@@ -66,9 +80,32 @@ h2 {
     flex-direction: column;
     height: 400px;
 }
+.report-section-sub h2 {
+    font-family: "Sora SemiBold", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #F0F0F0;
+}
+.report-section-sub p {
+    font-family: "Sora Regular", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #F0F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding : 0 65px 0 65px;
+}
 .testimony-section {
     background-color: #5762D5;
     box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+    border-color: #555555;
+    border: 1px;
 }
 .testimony-link {
     display: block;
@@ -84,6 +121,27 @@ h2 {
     align-items: center;
     flex-direction: column;
     height: 400px;
+}
+.testimony-section-sub h2 {
+    font-family: "Sora SemiBold", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #F0F0F0;
+}
+.testimony-section-sub p {
+    font-family: "Sora Regular", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #F0F0F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding : 0 65px 0 65px;
 }
 .report-section, .testimony-section {
     flex: 1;
@@ -119,7 +177,7 @@ h2 {
     border: none;
     cursor: pointer;
     width: 214px;
-    height: 40px;
+    height: 50px;
     transition : transform 1000ms;
 }
 .emergency-button:hover,.emergency-button:focus-visible {
@@ -143,9 +201,22 @@ footer {
 }
 .subheader {
     display: flex;
-    justify-content: flex-end;
-    margin: 20px 20px 20px 0;
+    justify-content: space-between;
+    margin: 20px 20px 0 20px;
     text-decoration: none;
+    max-height: 100px;
+}
+.logo-onde {
+    margin : 0;
+    width: 250px;
+    height: 100px;
+    scale: 0.8;
+}
+.logo-uir {
+    margin : 0;
+    width: 100px;
+    height: 100px;
+    scale: 0.7;
 }
 .SignUp-button {
     text-decoration: none;
