@@ -86,6 +86,10 @@ public class UserService implements IUserService {
         userRepo.save(user);
     }
 
+    public List<User> getUsersByProfile(String profile) {
+        return userRepo.findByProfile(profile);
+    }
+
 
 /*    @Override
     public List<User> getLastActiveUsers(int count) {

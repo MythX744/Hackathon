@@ -43,7 +43,7 @@ public class ResponseFormController {
                                  @RequestParam("question7") String[] question7) {
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            return "redirect:/login";
+            return "redirect:/navigation/login";
         }
 
         // Concatenating all answers

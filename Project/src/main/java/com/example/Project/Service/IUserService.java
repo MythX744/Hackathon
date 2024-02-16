@@ -26,6 +26,8 @@ public interface IUserService {
 
     User validateUser(String email, String password);
 
+    List<User> getUsersByProfile(String profile);
+
 
     //List<User> getLastActiveUsers(int count);
 }

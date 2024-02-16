@@ -11,6 +11,9 @@ public interface UserDAO extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
     int countByProfile(String profile);
 
+    List<User> findByProfile(String profile);
+
+
     //List<User> findLastActiveUsers(int count);
 
 
