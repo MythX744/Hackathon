@@ -96,13 +96,20 @@
   <main id="mainBase">
     <div class="top-section">
       <div class="subheader">
+          <div class="logo-section">
+            <img class="logo-uir" src="/images/uir.png" alt="uir">
+            <a href="https://www.onde.ma/fr/onde/presentation">
+              <img class="logo-onde" src="/images/ONDE.jpg" alt="onde">
+            </a>
+          </div>
         <a th:href="@{/User/loadLogin}" class="SignUp-button">Sign Up</a>
       </div>
       <div class="description-section">
         <div class="description">
          <img class="logo" src="/images/logo.png" alt="logo">
-          <h2>Ityhad !, ....</h2>
-          <p></p>
+            <div id="quote-container">
+                <p id="quote"></p>
+            </div>
         </div>
       </div>
     </div>
@@ -110,16 +117,16 @@
         <div class="report-section">
             <a onclick="checkConditionAndShowModal()" class="report-link">
                 <div class="report-section-sub">
-                  <h2>Report</h2>
-                  <p>Report</p>
+                  <h2>Speak Up Against Bullying</h2>
+                  <p>Click here to report any bullying you've experienced. Your bravery in speaking up helps us keep you and our community safe.</p>
                 </div>
             </a>
         </div>
             <div class="testimony-section">
                 <a th:href="@{/navigation/testimony}" class="testimony-link">
                     <div class="testimony-section-sub">
-                        <h2>Testimony</h2>
-                        <p>Testimony</p>
+                        <h2>Witness Testimony</h2>
+                        <p>Tap to share what you've seen. Your perspective contributes significantly to our efforts in creating a safer environment for everyone.</p>
                     </div>
                 </a>
             </div>
@@ -154,6 +161,41 @@
     document.body.classList.add('loaded');
   });
 
+  var quotes = [
+      "' I can face any challenges with strength and courage '",
+      "' I have unique qualities that make me valuable '",
+      "' I deserve to be treated with kindness and respect '",
+      "' There are people who care about me and want to help '",
+      "' My thoughts and feelings are important, and I have the right to express myself '",
+      "' I have the ability to learn and grow, overcoming any difficulties '",
+      "' I have the power to choose positivity and happiness in my life '",
+      "' I am surrounded by love, from family, friends, and those who care '",
+      "' I am safe, and steps can be taken to ensure my well-being '",
+      "' I can bounce back from tough situations and emerge stronger '"
+  ];
+
+  var index = 0;
+  var quoteElement = document.getElementById('quote');
+
+  // Function to display quotes one by one with smooth transition
+  function displayQuote() {
+      if (index === quotes.length) {
+          index = 0; // Reset index when end of array is reached
+      }
+      quoteElement.style.opacity = 0;
+      setTimeout(function() {
+          quoteElement.textContent = quotes[index];
+          quoteElement.style.opacity = 1;
+      }, 500); // Wait for the transition to complete
+      index++;
+  }
+
+  // Initial call to display first quote
+  displayQuote();
+
+  // Update quote every 5 seconds
+  setInterval(displayQuote, 5000); // Adjust timing to your preference
+
   function checkConditionAndShowModal() {
       fetch('/User/check-guest')
           .then(response => {
@@ -184,5 +226,4 @@
   function closeModal() {
       document.getElementById("myModal").style.display = "none";
   }
-
 </script>
