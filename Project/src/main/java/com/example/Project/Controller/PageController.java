@@ -1,5 +1,7 @@
 package com.example.Project.Controller;
 
+import com.example.Project.Model.User;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageController {
 
     @RequestMapping("/home")
-    public String LoadHome(Model model){
+    public String LoadHome(Model model, HttpSession session){
+        User user = (User) session.getAttribute("user");
+        if(user != null){
+            model.addAttribute("user", user);
+        }
         return "home";
     }
 

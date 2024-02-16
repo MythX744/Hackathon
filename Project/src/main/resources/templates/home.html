@@ -162,6 +162,7 @@
         </form>
     </div>
 </div>
+<input type="hidden" id="Username" th:value="${user.fullname}">
 </body>
 </html>
 <script>
@@ -234,4 +235,22 @@
   function closeModal() {
       document.getElementById("myModal").style.display = "none";
   }
+</script>
+<script id="user" type="application/json">${user}</script>
+<script>
+
+    var userName = document.getElementById("Username").value;
+    var subheaderButton = document.querySelector('.SignUp-button');
+    if (userName === "guest") {
+        subheaderButton.textContent = "Signed In as a guest";
+        subheaderButton.removeAttribute("href");
+    }
+    else if (userName === "null") {
+        subheaderButton.textContent = "Sign Up";
+    } else {
+        subheaderButton.textContent = "Signed as " + userName;
+        subheaderButton.removeAttribute("href");
+    }
+    var welcomeMessageElement = document.getElementById("welcomeMessage");
+    welcomeMessageElement.textContent = "Welcome, " + userName + "!";
 </script>
