@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Sora';
+    src: url('/fonts/Sora-Bold.ttf') format('truetype');
+    src: url('/fonts/Sora-ExtraBold.ttf') format('truetype');
+    src: url('/fonts/Sora-ExtraLight.ttf') format('truetype');
+    src: url('/fonts/Sora-Light.ttf') format('truetype');
+    src: url('/fonts/Sora-Medium.ttf') format('truetype');
+    src: url('/fonts/Sora-Regular.ttf') format('truetype');
+    src: url('/fonts/Sora-SemiBold.ttf') format('truetype');
+    src: url('/fonts/Sora-Thin.ttf') format('truetype');
+}
+body {
+    margin: 0;
+    background-color: #333333;
+    font-family: "Sora", sans-serif;
+    color: #333;
+}
+
+.contact-container {
+    padding: 80px 50px; /* Adjusted padding */
+    max-width: 1200px; /* Set a max-width for larger screens */
+    margin: 0 auto; /* Center the container */
+}
+
+.contact-container h1 {
+    font-family: "Sora Bold", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    color: white;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-container h3{
+    font-family: "Sora Bold", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: white;
+    text-align: center;
+}
+
+.contact-container p {
+    font-weight: 400;
+    font-size: 19px;
+    padding: 4px;
+    color: white;
+    font-family: "Sora Regular", sans-serif;
+}
+
+.associations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 columns of equal width */
+    grid-gap: 20px; /* This will create space between the blocks */
+    margin-bottom: 20px; /* Space below each row of blocks */
+
+}
+
+.association {
+    background: #555; /* Slightly lighter background for the blocks */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex; /* Using Flexbox */
+    flex-direction: column; /* Stack the children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Ensure the text is also centered */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .associations {
+        grid-template-columns: repeat(2, 1fr); /* 2 blocks per row on medium screens */
+    }
+}
+
+@media (max-width: 767px) {
+    .associations {
+        grid-template-columns: 1fr; /* 1 block per row on small screens */
+    }
+}

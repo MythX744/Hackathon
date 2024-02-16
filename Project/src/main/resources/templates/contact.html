@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+<link rel="stylesheet" th:href="@{/css/contact.css}" />
+    <style>
+        .contact-container h3{
+            font-family: "Sora Regular", sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+<div id="content-wrapBase">
+    <div th:replace="fragments/header :: header" > </div>
+    <main id="mainBase">
+        <div class="contact-container">
+            <h1>Contact Associations in Morocco</h1>
+            <div class="associations">
+                <div class="association">
+                    <h3>AMESIP (Association Marocaine d'Aide aux Enfants en Situation Précaire)</h3>
+                    <p>+212 5 37 75 27 47<br>
+                        contact@amesip.org</p>
+                </div>
+                <div class="association">
+                    <h3>Association Bayti</h3>
+                    <p>Phone: +212 6 79 91 48 69</p>
+                </div>
+                <div class="association">
+                    <h3>Enfance Espoir Maroc</h3>
+                    <p>Phone: +212 524 331 753</p>
+                </div>
+                <div class="association">
+                    <h3>Association Touche pas à mon enfant </h3>
+                    <p>Email: https://www.assohelp.org/</p>
+                </div>
+                <div class="association">
+                    <h3>Ligue Marocaine Pour la Protection de L'Enfance (LMPE)</h3>
+                    <p>Phone: +212 537 759 675</p>
+                </div>
+                <div class="association">
+                    <h3>Association Marocaine d'Aide à l'Enfant et à la Famille (AMAEF) </h3>
+                    <p>Phone: +212 5 23 34 07 97</p>
+                </div>
+                <div class="association">
+                    <h3>Association de Protection de l’Enfance et Sensibilisation de la Famille (APISF) </h3>
+                    <p>Phone: +212 6 67 04 41 57</p>
+                </div>
+                <div class="association">
+                    <h3>Association nationale pour la Protection de l’Enfance – Berrechid </h3>
+                    <p>Phone: +212 6 61 40 63 44</p>
+                </div>
+                <div class="association">
+                    <h3>L’association Enfants du Désert </h3>
+                    <p>E-mail : asso (at) enfantsdudesert.org</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div th:replace="fragments/footer :: footer" > </div>
+</div>
+<script th:src="@{/js/header.js}"></script>
+</body>
+</html>

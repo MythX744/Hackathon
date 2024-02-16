@@ -15,7 +15,7 @@ public class PageController {
 
     @RequestMapping("/contact")
     public String LoadContact(Model model){
-        return "";
+        return "contact";
     }
 
     @RequestMapping("/specialists")
