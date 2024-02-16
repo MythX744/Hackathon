@@ -80,12 +80,10 @@ body, html {
 }
 
 
-/* ... existing styles ... */
-
 /* Styles for fieldset and legend for radio buttons */
 .form fieldset {
     border: none;
-    margin: 20px 0;
+    margin: 20px 0 0 0;
 }
 
 .form legend {

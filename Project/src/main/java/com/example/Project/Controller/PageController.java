@@ -33,6 +33,11 @@ public class PageController {
         return "testimony";
     }
 
+    @RequestMapping("/lightHarassment")
+    public String LoadLightHarassment(Model model){
+        return "lightHarassment";
+    }
+
     @RequestMapping("/severeHarassment")
     public String LoadSevereHarassment(Model model){
         return "severeHarassment";

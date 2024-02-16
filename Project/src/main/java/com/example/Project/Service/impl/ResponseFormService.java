@@ -13,13 +13,13 @@ public class ResponseFormService implements IResponseFormService {
 
     private final ResponseFormDAO responseFormRepo;
 
-    @Autowired
-    public ResponseFormService(ResponseFormDAO theResponseFormRepo){responseFormRepo = theResponseFormRepo;}
-
     @Override
-    public ResponseForm saveResponseForm(ResponseForm responseForm) {
+    public ResponseForm save(ResponseForm responseForm) {
         return responseFormRepo.save(responseForm);
     }
+
+    @Autowired
+    public ResponseFormService(ResponseFormDAO theResponseFormRepo){responseFormRepo = theResponseFormRepo;}
 
     @Override
     public ResponseForm updateResponseForm(ResponseForm responseForm) {

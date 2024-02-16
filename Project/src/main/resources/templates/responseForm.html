@@ -5,6 +5,12 @@
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/responseForm.css}" />
     <title>Form</title>
+    <style>
+        /* Target only the first fieldset */
+        .form fieldset:first-of-type {
+            margin-bottom: 0; /* Adjust as needed */
+        }
+    </style>
 </head>
 <body>
 <div id="content-wrapBase">
@@ -23,30 +29,51 @@
                     </label>
                 </fieldset>
 
-                <label for="question2">If you have been targeted by a bully, you have come to the right place. So tell me what are the types of harassment ?</label>
-                <select id="question2" name="question2" required>
-                    <option value="">--Select a Type--</option>
-                    <option th:value="verbal" th:text="'Verbal: name calling, mocking, threatening, gossiping, or spreading rumors'"></option>
-                    <option th:value="psychological" th:text="'Psychological: stalking, taunting, harassing, or intimidating'"></option>
-                    <option th:value="physical" th:text="'Physical: hitting, punching, pushing, stealing personal property, or any other form of physical aggression'"></option>
-                    <option th:value="social" th:text="'Social: ignoring, isolating, or excluding peers from social activities'"></option>
-                    <option th:value="cyber" th:text="'Cyber: bullying through electronic devices; for example, texting, e- mailing, posting on social media, or uploading lewd or offensive pictures'"></option>
-                </select>
+                <<!-- Question 2 - Checkboxes -->
+                <fieldset>
+                    <legend>What are the types of harassment?</legend>
+                    <label><input type="checkbox" name="question2" value="verbal"> Verbal: name calling, mocking, threatening, gossiping, or spreading rumors</label>
+                    <label><input type="checkbox" name="question2" value="psychological"> Psychological: stalking, taunting, harassing, or intimidating</label>
+                    <label><input type="checkbox" name="question2" value="physical"> Physical: hitting, punching, pushing, stealing personal property, or any other form of physical aggression</label>
+                    <label><input type="checkbox" name="question2" value="social"> Social: ignoring, isolating, or excluding peers from social activities</label>
+                    <label><input type="checkbox" name="question2" value="cyber"> Cyber: bullying through electronic devices; for example, texting, e-mailing, posting on social media, or uploading lewd or offensive pictures</label>
+                </fieldset>
 
-                <label for="question3">Are you in danger ? If yes, who is it?</label>
-                <input type="text" id="question3" name="question3" required>
+                <!-- Question 3 - Radio Buttons -->
+                <fieldset>
+                    <legend>Are you in danger?</legend>
+                    <label><input type="radio" name="question3" value="yes" required> Yes</label>
+                    <label><input type="radio" name="question3" value="no" required> No</label>
+                </fieldset>
 
-                <label for="question4">Tell me how bullying is affection your life</label>
-                <input type="text" id="question4" name="question4" required>
+                <!-- Question 4 - Checkboxes for answers (5 to 7) -->
+                <fieldset>
+                    <legend>Tell me how bullying is affecting your life</legend>
+                    <label><input type="checkbox" name="question4" value="academic"> Academically</label>
+                    <label><input type="checkbox" name="question4" value="socially"> Socially</label>
+                    <label><input type="checkbox" name="question4" value="emotionally"> Emotionally</label>
+                    <label><input type="checkbox" name="question4" value="physically"> Physically</label>
+                </fieldset>
 
-                <label for="question5">Did you report it to anyone or talked about it ?</label>
-                <input type="text" id="question5" name="question5" required>
+                <!-- Question 5 - Radio Buttons -->
+                <fieldset>
+                    <legend>Did you report it to anyone or talked about it?</legend>
+                    <label><input type="radio" name="question5" value="yes" required> Yes</label>
+                    <label><input type="radio" name="question5" value="no" required> No</label>
+                </fieldset>
 
                 <label for="question6">Can you tell me about a time when something happened at school that made you feel upset or uncomfortable?</label>
                 <textarea id="question6" name="question6" required rows="4"></textarea>
 
-                <label for="question7">How can we help you ? Do you want to call a doctor, your parents ... ?</label>
-                <input type="text" id="question7" name="question7" required>
+                <!-- Question 7 - Checkboxes -->
+                <fieldset>
+                    <legend>How can we help you? Do you want to call a doctor, your parents, or...?</legend>
+                    <label><input type="checkbox" name="question7" value="doctor"> Call a Doctor</label>
+                    <label><input type="checkbox" name="question7" value="parents"> Inform Parents/Guardians</label>
+                    <label><input type="checkbox" name="question7" value="counselor"> Speak with a Counselor</label>
+                    <label><input type="checkbox" name="question7" value="police"> Contact the Police</label>
+                    <label><input type="checkbox" name="question7" value="relation"> Inform Relative</label>
+                </fieldset>
 
                 <button type="submit">Submit</button>
             </form>

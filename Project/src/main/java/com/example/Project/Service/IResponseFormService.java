@@ -4,7 +4,7 @@ import com.example.Project.Model.ResponseForm;
 import java.util.List;
 
 public interface IResponseFormService {
-    ResponseForm saveResponseForm(ResponseForm responseForm);
+    ResponseForm save(ResponseForm responseForm);
 
     ResponseForm updateResponseForm(ResponseForm responseForm);
 
