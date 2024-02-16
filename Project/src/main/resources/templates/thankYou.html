@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <style>
+        /* The Modal (background) */
+        .custom-alert-modal {
+            font-family: "Sora Light", sans-serif;
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .custom-alert-content {
+            background-color: #fefefe;
+            font-family: "Sora Light", sans-serif;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .custom-alert-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: "Sora Light", sans-serif;
+        }
+
+        .custom-alert-close:hover,
+        .custom-alert-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Custom Alert Modal -->
+<div id="customAlertModal" class="custom-alert-modal">
+    <div class="custom-alert-content">
+        <span class="custom-alert-close">&times;</span>
+        <p>Thank you for your testimony. Your courage makes a difference.</p>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+    // When the page loads
+    window.onload = function() {
+        // Display the custom alert modal
+        var modal = document.getElementById('customAlertModal');
+        var span = document.getElementsByClassName("custom-alert-close")[0];
+
+        // Show the modal
+        modal.style.display = "block";
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+            window.location.href = '/navigation/home'; // Redirect to the home page after closing the modal
+        }
+
+        // Also close the modal and redirect if the user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                window.location.href = '/navigation/home';
+            }
+        }
+    }
+</script>
+
