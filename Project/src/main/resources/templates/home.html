@@ -10,7 +10,7 @@
   <main id="mainBase">
     <div class="top-section">
       <div class="subheader">
-        <a th:href="@{/User/logout}" class="SignUp-button">Sign Up</a>
+        <a th:href="@{/User/loadLogin}" class="SignUp-button">Sign Up</a>
       </div>
       <div class="description-section">
         <div class="description">
@@ -44,10 +44,78 @@
   </main>
   <div th:replace="fragments/footer :: footer" > </div>
 </div>
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Age Verification</h2>
+        <p>Please select your age group:</p>
+        <form id="ageForm">
+            <input type="radio" id="above12" name="age" value="above12">
+            <label for="above12">Above 12 years old</label><br>
+            <input type="radio" id="under12" name="age" value="under12">
+            <label for="under12">Under 12 years old</label><br><br>
+            <button type="submit" onclick="submitAge()">Submit</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
 <script>
   window.addEventListener('load', function() {
     document.body.classList.add('loaded');
   });
+
+  function checkConditionAndShowModal() {
+      fetch('/User/report')
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.text();
+          })
+          .then(data => {
+              if (data === 'true') {
+                  showModal(); // Show modal if condition is met
+              } else {
+                  console.log('Condition not met');
+              }
+          })
+          .catch(error => {
+              console.error('There was a problem with your request:', error);
+          });
+  }
+
+  function showModal() {
+      document.getElementById("myModal").style.display = "block";
+  }
+
+  function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+  }
+
+  function submitAge() {
+      var age = document.querySelector('input[name="age"]:checked').value;
+
+      fetch('/User/age-filter', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(age),
+      })
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.text();
+          })
+          .then(data => {
+              console.log('Age submitted successfully:', data);
+              closeModal(); // Close modal after submission
+          })
+          .catch(error => {
+              console.error('There was a problem with your submission:', error);
+          });
+  }
 </script>
