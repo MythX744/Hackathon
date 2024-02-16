@@ -11,7 +11,7 @@
     <div th:replace="fragments/header :: header"></div>
     <main id="mainBase">
         <div class="text-section">
-            <h2>WARNING: Proceed with Caution – Potential Hazards Ahead!</h2>
+            <h2 style="color: #ff2e2e">WARNING: Proceed with Caution – Potential Hazards Ahead!</h2>
             <p> &nbsp;&nbsp;It's important that you know we're here to help and support you. We're deeply concerned about the situation you're facing at school. Your safety is our top priority.<br>
                 Please understand that what you're going through is serious, and you shouldn't have to endure it alone. You need to reach out to someone you trust as soon as possible.
                 Whether it's a teacher, counselor, family member, or friend, they can provide the support and guidance you need.<br>
@@ -68,7 +68,6 @@
         const choiceQ2Family = document.querySelector('input[name="choiceQ2"][value="family"]');
         const secondQuestion = document.querySelector('.form-group:nth-child(3)');
         const phoneNumberInput = document.querySelector('#phone-number-input');
-        const submitButton = document.querySelector('.form-group button');
 
         function handleChoiceQ1Change() {
             if (choiceQ1Yes.checked) {

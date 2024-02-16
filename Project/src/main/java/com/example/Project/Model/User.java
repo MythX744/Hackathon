@@ -171,6 +171,11 @@ public class User {
         this.receivedMessages = receivedMessages;
     }
 
+    public User(String fullname, String phoneNumber) {
+        this.fullname = fullname;
+        this.phoneNumber = phoneNumber;
+    }
+
     @Override
     public String toString() {
         return "User{" +
