@@ -16,7 +16,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import com.example.Project.Service.impl.UserService;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Set;
 
 
@@ -55,17 +58,18 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(HttpSession session, @ModelAttribute("user") User user) {
+    public String login(HttpSession session, User user) {
         String email = user.getEmail();
         String password = user.getPassword();
-        if (userService.validateUser(email, password)) {
-            session.setAttribute("user", user);
+        if ((user = userService.validateUser(email, password)) != null) {
+            session.setAttribute("user", user); // Trigger rating updates for all recipes
             return "redirect:/navigation/home";
         } else {
             System.out.println("Invalid credentials");
             return "redirect:/User/loadLogin";
         }
     }
+
 
     @GetMapping("/login/guest")
     public String signInAsGuest(HttpSession session) {
@@ -105,6 +109,26 @@ public class UserController {
         }
 
         return "redirect:/User/loadLogin";
+    }
+
+    @GetMapping("/report")
+    public String processLink(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user"); // Directly retrieve the user object from the session
+        System.out.println("User: " + user.getFullname());
+        if (user == null) {
+            return "redirect:/User/loadLogin"; // Redirect if no user is found in the session
+        } else if ("guest".equals(user.getFullname())) {
+            return "modal";
+        } else {
+            LocalDate dob = user.getDateOfBirth();
+            if (dob != null) {
+                LocalDate currentDate = LocalDate.now();
+                int age = Period.between(dob, currentDate).getYears();
+                System.out.println("Age: " + age);
+                model.addAttribute("age", age); // Add age to model
+            }
+            return "test"; // Return the view name
+        }
     }
 
     @GetMapping("/logout")
