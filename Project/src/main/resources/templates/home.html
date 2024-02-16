@@ -4,6 +4,92 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" th:href="@{/css/home.css}" />
   <title>Landing</title>
+    <style>
+        /* Modal container */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 9999; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scrolling if needed */
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+
+        }
+        .modal-content h2 {
+            font-family: "Sora Bold", sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+        }
+        .modal-content p {
+            font-family: "Sora Regular", sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+            margin : 0 0 20px 0;
+        }
+
+        /* Modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 0 20px 20px 20px;
+            border: 1px solid #888;
+            width: 45%; /* Could be more or less, depending on screen size */
+            height: 200px;
+            border-radius: 20px;
+            font-family: Sora, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin : 0 20px 0 20px;
+        }
+
+        .modal-content label {
+            font-family: "Sora Regular", sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            margin : 0 20px 0 0;
+        }
+
+        .modal-content button{
+            padding: 10px 20px;
+            background-color: #5762D5;
+            color: #FCFCFC;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div id="content-wrapBase">
@@ -22,7 +108,7 @@
     </div>
     <div class="bottom-section">
         <div class="report-section">
-            <a th:href="@{/User/report}" class="report-link">
+            <a onclick="checkConditionAndShowModal()" class="report-link">
                 <div class="report-section-sub">
                   <h2>Report</h2>
                   <p>Report</p>
@@ -47,15 +133,17 @@
 <div id="myModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Age Verification</h2>
+        <div class="modal-header">
+            <h2>Age Verification</h2>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
         <p>Please select your age group:</p>
-        <form id="ageForm">
+        <form id="ageForm" th:action="@{/User/age-filter}"  method="POST">
             <input type="radio" id="above12" name="age" value="above12">
             <label for="above12">Above 12 years old</label><br>
             <input type="radio" id="under12" name="age" value="under12">
             <label for="under12">Under 12 years old</label><br><br>
-            <button type="submit" onclick="submitAge()">Submit</button>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </div>
@@ -67,9 +155,10 @@
   });
 
   function checkConditionAndShowModal() {
-      fetch('/User/report')
+      fetch('/User/check-guest')
           .then(response => {
               if (!response.ok) {
+                  window.location.href = '/User/report';
                   throw new Error('Network response was not ok');
               }
               return response.text();
@@ -77,8 +166,10 @@
           .then(data => {
               if (data === 'true') {
                   showModal(); // Show modal if condition is met
+                  console.log('Condition met');
               } else {
                   console.log('Condition not met');
+                  window.location.href = '/User/report';
               }
           })
           .catch(error => {
@@ -94,28 +185,4 @@
       document.getElementById("myModal").style.display = "none";
   }
 
-  function submitAge() {
-      var age = document.querySelector('input[name="age"]:checked').value;
-
-      fetch('/User/age-filter', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(age),
-      })
-          .then(response => {
-              if (!response.ok) {
-                  throw new Error('Network response was not ok');
-              }
-              return response.text();
-          })
-          .then(data => {
-              console.log('Age submitted successfully:', data);
-              closeModal(); // Close modal after submission
-          })
-          .catch(error => {
-              console.error('There was a problem with your submission:', error);
-          });
-  }
 </script>
