@@ -116,9 +116,8 @@ public class UserController {
         User user = (User) session.getAttribute("user"); // Directly retrieve the user object from the session
         if (user == null) {
             return "redirect:/User/loadLogin"; // Redirect if no user is found in the session
-        } else if ("guest".equals(user.getFullname())) {
-            return "true";
-        } else {
+        }
+        else {
             LocalDate dob = user.getDateOfBirth();
             int age = 0;
             if (dob != null) {
@@ -126,17 +125,28 @@ public class UserController {
                 age = Period.between(dob, currentDate).getYears();
                 System.out.println("Age: " + age);
             }
-            if (age < 12) {
-                return "redirect:/navigation/loadResponseFormChild";
-            } else {
-                return "redirect:/navigation/loadResponseForm";
-            }
+                if (age < 12) {
+                    return "redirect:/navigation/loadResponseFormChild";
+                } else {
+                    return "redirect:/navigation/loadResponseForm";
+                }
+        }
+    }
+
+    @GetMapping("/check-guest")
+    @ResponseBody
+    public String checkGuest(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if ("guest".equals(user.getFullname())) {
+            return "true";
+        } else {
+            return "false";
         }
     }
 
     @PostMapping("/age-filter")
-    public String submitAge(@RequestBody String age) {
-        if (age == "under-12") {
+    public String submitAge(@RequestParam("age") String age, HttpSession session) {
+        if (age.equals("under12")) {
             return "redirect:/navigation/loadResponseFormChild";
         } else {
             return "redirect:/navigation/loadResponseForm";
